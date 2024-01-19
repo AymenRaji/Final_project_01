@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"">
+</head>
+<body>
+    <header>
+    
+        <div class="logo"><a href="/">Al-Amal</a></div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contacts</a></li>
+
+            </ul>
+        </nav>
+            <form class="form-iline sticky-top search">
+                <input class="form-control ml-em-" type="search" placeholder="Search" aria-label="Serach">
+                <button class="btn btn-outline-success " type="submit" style=float:right;>Search</button>
+            </form>
+    
+    </header>
+    <div id="login">
+        <form action="{{url_for('login')}}" method="post">
+            <input type="text" placeholder="email" name="username" required><br>
+            <input type="text" placeholder="password" name="password" required><br>
+            <input type="submit" value="Log-In">
+    </form>
+    </div>
+
+    <p>you don't have account? here you can <a href="{{url_for('register')}}"><br>register </a></p>
+
+    <footer class="white-section" id="footer">
+        <div class="container-fluid">
+
+        <a href="https://twitter.com/"><i class="fa-brands fa-twitter fa-sm social-icon" style="color: #000205;"></i></a>
+        <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook fa-sm social-icon" style="color: #000000;"></i></a>
+        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-sm social-icon"></i></a>
+        <a href="https://mail.google.com/"><i class="fa-solid fa-envelope fa-sm social-icon" style="color: #000000;"></i></a>
+        <p style="margin-top: 10px;">© Copyright Al-Amal</p>
+  
+        </div>
+      </footer>
+</body>
+</html>

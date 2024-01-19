@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product </title>
+    <link rel="stylesheet" href= "{{url_for('static', filename='css/product-style.css')}}">
+    
+</head>                 
+<body>
+    <header>
+        <div class="logo"><a href="/">Al-Amal</a></div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contacts</a></li>
+
+            </ul>
+        </nav>
+        <form class="form-iline sticky-top search">
+            <input class="form-control ml-em-" type="search" placeholder="Search" aria-label="Serach">
+            <button class="btn btn-outline-success " type="submit" style=float:right;>Search</button>
+        </form>
+       
+    </header>
+    <div>
+        <h2>These a product page</h2>
+    </div>
+    {% for product in products %}
+        <div class="product-card">
+            <img src="{{product.image}}" alt="{{product.name}}">
+            <h3>Name: {{product.name}}</h3>
+            <p>Price: {{product.price}}</p>
+            <button>Add to cart</button>
+            <button></button>
+
+        </div>
+    {% endfor %}
+    <div id="product-listin" class="product-list">
+        
+       
+
+        
+    </div>
+    
+    <script type="module" src="{{ url_for('static', filename='/JS/producScript.js') }}"></script>
+   
+</body>
+</html>

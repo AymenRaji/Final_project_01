@@ -1,0 +1,161 @@
+body{
+    font-family: "Montserrat-bold";
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.6;
+    background-color: #713b9a;
+
+}
+h1,h2,h3,p{
+    margin: 0;
+    padding: 0;
+}
+
+.product-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product-card {
+    box-shadow: 0 4px 8ox 0 rgb(0, 0, 2);
+    color: #fff;
+    width: calc(25% - 20px);
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+
+}
+.product-card p {
+    max-height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.product-card h3{
+    max-width: fit-content;
+    max-height: min-content;
+    text-overflow: ellipsis;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+ul{
+    list-style: none;
+}
+
+  p{
+    color: #fefcfc;
+  }
+ .logo a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  header{
+    background-color: #333;
+    color: #fff;
+    padding: 10px ;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+  .logo{
+    font-size: 30px;
+    font-weight: bold;
+  } 
+  .logo a:hover{
+    color: #ffcc00;
+  }
+  nav ul {
+    list-style: none;
+  }
+  nav ul li{
+    display: inline-block;
+    margin-right: 10px;
+    list-style: none;
+   
+  }
+  nav a {
+    text-decoration: none;
+    padding: 10px;
+  }
+  .product-card{
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  
+  .product-card img{
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .product-card button{
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  #account{
+    display: flex;
+  }
+  #account :hover{
+    color: #ffcc00;
+    
+  }
+  nav a{
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+
+  }
+  nav a:hover{
+    color: #ffcc00;
+  }
+
+
+
+
+
+
+  @media screen and (max-width: 600px){ 
+    nav ul li {
+        display: block;
+        margin-bottom: 5px;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .product-card{
+        width: calc(33.33% - 20px);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .product-card{
+        width: calc(50% - 20px);
+    }
+  }
+
+  @media screen and(max-width: 480px) {
+    .product-card{
+        width: 100%;
+    }
+  }

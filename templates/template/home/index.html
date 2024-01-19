@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="fontawesome-free-6.4.0-web\css\all.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" ></script>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="/">Al-Amal</a></div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contacts</a></li>
+
+            </ul>
+        </nav>
+        <form class="form-iline sticky-top search">
+            <input class="form-control ml-em-" type="search" placeholder="Search" aria-label="Serach">
+            <button class="btn btn-outline-success " type="submit" style=float:right;>Search</button>
+        </form>
+       
+    </header>
+    <div id="home-banner">
+        <div id="banner">
+            <div class="grid-container">
+                <img class="grid-itme" src="static\images\online-shopping-banner-template_23-2148931702.avif" alt="Banner-img">
+                <div class="grid-item"> 
+                    <h1>Welcome to Al-Amal store</h1>
+                    <br>
+                    <div id="account">
+                        <button class="register-button"><a href="/register">Register</a></button>
+                        <button class="log-in-button"><a href="/login">log-in</a></button>
+                        
+                    </div>
+                   </div>
+            </div>
+          
+        </div>
+
+        <div id="account">
+            <button class="register-button"><a href="/register">Register</a></button>
+            <button class="log-in-button"><a href="/login">log-in</a></button>
+            
+        </div>
+
+
+    </div>
+
+
+
+       <h3>These is a main page </h3>
+       
+        <div id="products">
+            <div class="row">
+                <div class="column" >
+                    <div class="card">
+                        <img src="static\images\Iphone 14 pro\download (1).jpeg" alt="Iphone 14 pro" style="width: 100%;">
+                        <h4>Iphone 14 pro</h4>
+                        <p class="price">price: </p>
+                        <button>Add to cart</button>
+                </div>
+                <h5>Here you can find <a href="/products">products</a></h5>
+                
+                    
+                </div>
+                <div class="column">
+                    <div class="card"> 
+                        <img src="static\images\Iphone 14 pro max\download (1).jpeg" alt="Iphone 14 pro max" style="width: 100%;">
+                    <h4>Iphone 14 pro max</h4>
+                    <p class="price">price: </p>
+                    <button>Add to cart</button>
+                    </div>
+                    
+                </div>
+                <div class="cloumn">
+                    <div class="card">
+                        <img src="static\images\Iphone 14\download (1).jpeg" alt="Iphone 14" style="width: 100%;">
+                        <h4>Iphone 14</h4>
+                        <p class="price">price: </p>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+                
+    
+            </div>
+            
+
+        </div>
+        
+       
+
+    <footer  id="footer">
+        <div >
+            <h2>Contact US</h2>
+            <a href="https://twitter.com/"><i class="fa-brands fa-twitter fa-sm social-icon" style="color: #000205;"></i></a>
+            <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook" style="color: #f1f0f4;"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-sm social-icon"></i></a>
+            <a href="https://mail.google.com/"><i class="fa-solid fa-envelope fa-sm social-icon" style="color: #000000;"></i></a>
+            <p style="margin-top: 10px;">© Copyright Al-Amal</p>
+        
+        </div>
+    </footer>
+
+    
+</body>
+</html>
