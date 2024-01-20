@@ -218,3 +218,21 @@ ul{
   * {
     box-sizing: border-box;
   }
+
+/* 
+  Cart Styling
+
+  .products-container{
+    max-width: 650px;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .product-heade{
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 4px solid lightgray;
+    margin: 0 auto;
+  } */

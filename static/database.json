@@ -20,7 +20,8 @@
       "brand": "apple",
       "category": "Phone",
       "inStock": true,
-      "image": "https://firebasestorage.googleapis.com/v0/b/e-shop-vid.appspot.com/o/products%2F1694245643713-iphone14-white.png?alt=media&token=2486cd23-8aa9-449e-8563-8c8a3278d0b4"
+      "image": "static/images/Iphone 14 pro max/download.jpeg",
+      "inCart": 1
     },
     {
       "id": "64a4ebe300900d44bb50628a",
@@ -30,7 +31,9 @@
       "brand": "logitech",
       "category": "Accesories",
       "inStock": true,
-      "image": "https://firebasestorage.googleapis.com/v0/b/e-shop-vid.appspot.com/o/products%2Flogitech-graphite.png?alt=media&token=d07334d8-ab2b-4648-a38b-2a062a1a49bc"
+      "image": "static/images/Iphone 14/download.jpeg"
+      ,
+      "inCart": 1
     },
     {
       "id": "649d775128b6744f0f497040",
@@ -40,7 +43,9 @@
       "brand": "Nerunsa",
       "category": "Watch",
       "inStock": true,
-      "image": "https://firebasestorage.googleapis.com/v0/b/e-shop-vid.appspot.com/o/products%2F1695192445608-watch-black.jpg?alt=media&token=4446b901-01ab-4152-8953-e36b22608755"
+      "image": "static/images/Iphone 14 pro/download.jpeg"
+      ,
+      "inCart": 1
     },
     {
       "id": 4,
@@ -61,6 +66,8 @@
       "categorey": "",
       "inStock": true,
       "image": "img.src"
+      ,
+      "inCart": 1
     },
     {
       "id": 6,
@@ -71,6 +78,8 @@
       "categorey": "",
       "inStock": true,
       "image": "img.src"
+      ,
+      "inCart": 1
     },
     {
       "id": 7,
@@ -81,6 +90,8 @@
       "categorey": "",
       "inStock": true,
       "image": "img.src"
+      ,
+      "inCart": 1
     },
     {
       "id": 8,
@@ -91,6 +102,8 @@
       "categorey": "",
       "inStock": true,
       "image": "img.src"
+      ,
+      "inCart": 1
     },
     {
       "id": 9,
@@ -101,6 +114,8 @@
       "categorey": "",
       "inStock": true,
       "image": "img.src"
+      ,
+      "inCart": 1
     },
     {
       "id": 10,
@@ -111,6 +126,8 @@
       "categorey": "",
       "inStock": true,
       "image": "img.src"
+      ,
+      "inCart": 1
     }
   ]
 }

@@ -16,7 +16,10 @@
                 <li><a href="#">About</a></li>
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Contacts</a></li>
-
+                <li class="cart">
+                    <a href="/Shoppin_Cart">
+                        Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
+                    </li>
             </ul>
         </nav>
         <form class="form-iline sticky-top search">
@@ -33,8 +36,9 @@
             <img src="{{product.image}}" alt="{{product.name}}">
             <h3>Name: {{product.name}}</h3>
             <p>Price: {{product.price}}</p>
-            <button>Add to cart</button>
-            <button></button>
+            <button class="cart-button">Add to cart</button>
+          
+           
 
         </div>
     {% endfor %}
@@ -46,6 +50,7 @@
     </div>
     
     <script type="module" src="{{ url_for('static', filename='/JS/producScript.js') }}"></script>
-   
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

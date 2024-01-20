@@ -1,0 +1,126 @@
+/* Cart Styling */
+body{
+    font-family: "Montserrat-bold";
+    background-color: #713b9a;
+    list-style: none;
+  }
+ nav a .logo{
+    text-decoration: none;
+    padding: 20px 10px;
+    margin-top: auto;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  nav a:hover{
+    color: #ffcc00;
+  }
+  nav button{
+    cursor: pointer;
+  }
+ul{
+    list-style: none;
+}
+
+header{
+    background-color: #333;
+    color: #fff;
+    padding: 10px 30px;
+    display: flex;
+    margin: 0px -10px;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+  }
+  .logo{
+    color: #fff;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+  } 
+  .logo a:hover{
+    color: #ffcc00;
+  }
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+
+  }
+  nav li{
+    margin-right: 15px;
+    list-style: none;
+
+  }
+.products-container{
+    max-width: 650px;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .products-container ion-icon{
+    font-size: 25px;
+    color: blue;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+  .product-header{
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 4px solid lightgray;
+    margin: 0 auto;
+    color: #fff;
+  }
+.product-title{
+    width: 45%;
+    border-bottom: 1px solid lightgray;
+  }
+.price {
+    width: 15%;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+  }
+
+  .total{
+    width: 10%;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+  }
+  .quantity{
+    width: 30%;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+  }
+
+  .product{
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgray;
+  }
+  .product img{
+    width: 75px;
+  }
+  .basketTotalContainer{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .basketTotalTitle{
+    width: 30%;
+  }
+  .basketTotal{
+    width: 10%;
+  }

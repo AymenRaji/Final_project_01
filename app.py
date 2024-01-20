@@ -3,6 +3,8 @@ import flask
 from flask import render_template, request, url_for
 from flask import jsonify
 import json 
+from flask import abort
+
 
 # App Name
 app = flask.Flask("app")
@@ -27,14 +29,8 @@ def write_data(data, file_path):
     with open(file_path, "w") as file:
         json.dump(data, file, indent=2)
 
-def update_data(data, file_path):
-    with open(file_path, '+a') as file:
-        if(id == "new_update"):
-            value = "id"
-            data = ""
-            return data
 
-def Del 
+
 # Registration
 def register_user(username, password, email):
     database = read_data(file_path)
@@ -65,7 +61,7 @@ def add_product(product_name, price, description="",
     # new product id
     prduct_id = len(database['products']) + 1
     # Default Image to add the uimage url
-    default_image = r"static/images/dog-img.jpg"
+    default_image = "static/images/dog-img.jpg"
     # new product to be added
     new_product = {"id": prduct_id, "name": product_name, "description": description, "price": price,
                     "brand": brand, "categorey": categorey, "inStock": in_stock,
@@ -128,7 +124,46 @@ def get_products():
 
     return product_page
 
+@app.route("/update-products", methods=["POST"])
+def update_products():
+    # 
+    if not current_user.is_admin:
+        abort(403)
+    update_product = request.get_json()
+    database = read_data(file_path)
+    product_to_be_updated = next((product for product in database['products'] if product['id'] == update_product["id"]), None)
+# 
+    if product_to_be_updated is not None:
+        product_to_be_updated.update(update_product)
+        write_data(database, file_path)
+        return jsonify(product_to_be_updated), 200
+    return jsonify({"error": "product not found"}), 404
+
+# 
+@app.route("/delete_products", methods=["POST"])
+def delete_product():
+    if not current_user.is_admin:
+        abort(403)
+    # 
+    product_id = request.get_json()
+    database = read_data(file_path)
+
+    product_to_be_delete = next((product for product in database['products'] if product['id'] == product_id), None)
+
+    if product_to_be_delete is not None:
+        database['products'].remove(product_to_be_delete)
+        write_data(database, file_path)
+        return jsonify({"message": "product deleted"}), 200
+    return jsonify({"error": "product not found"}),404
+
+
+@app.route("/Shoppin_Cart")
+def cart():
+    cart_page = render_template("template/cart/page.html")
+    return cart_page
+
 # if app == "__main__":
 #     app.run(depug=True)
+
 
     

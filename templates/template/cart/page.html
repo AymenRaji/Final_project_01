@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/cart.css')}}">
+
+</head>
+<body>
+    <header>
+        
+        <div class="logo"><a href="/">Al-Amal</a></div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contacts</a></li>
+                    <li class="cart">
+                        <a href="/Shoppin_Cart">
+                            Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
+                        </li>
+                </ul>
+            </nav>
+            <form class="form-iline sticky-top search">
+                <input class="form-control ml-em-" type="search" placeholder="Search" aria-label="Serach">
+                <button class="btn btn-outline-success " type="submit" style=float:right;>Search</button>
+            </form>
+           
+           
+       
+            
+    </header>
+    
+    <!-- <div class="cloumn">
+        <div class="card">
+            <img src="static\images\Iphone 14\download (1).jpeg" alt="Iphone 14" style="width: 100%;">
+            <h4>Iphone 14</h4>
+            <p class="price">price: </p>
+            <button class="product-button">Add to cart</button>
+        </div>
+        <div class="column">
+            <div class="card"> 
+                <img src="static\images\Iphone 14 pro max\download (1).jpeg" alt="Iphone 14 pro max" style="width: 100%;">
+            <h4>Iphone 14 pro max</h4>
+            <p class="price">price: </p>
+            <button class="product-button">Add to cart</button>
+            </div>
+            
+        </div> -->
+        <div class="products-container">
+            <div class="product-header">
+                <h5 class="product-title">Product</h5>
+                <h5 class="price">Price</h5>
+                <h5 class="quantity">Quantity</h5>
+                <h5 class="total">Total</h5>
+
+            </div>
+            <div class="products">
+                
+                
+            </div>
+        </div>
+
+    <footer>
+
+
+
+    </footer>
+    
+    <script type="module" src="{{ url_for('static', filename='/JS/producScript.js') }}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
