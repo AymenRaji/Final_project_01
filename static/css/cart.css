@@ -100,7 +100,7 @@ header{
     align-items: center;
   }
 
-  .product{
+  .products{
     width: 45%;
     display: flex;
     justify-content: space-around;
@@ -108,7 +108,7 @@ header{
     padding: 10px 0;
     border-bottom: 1px solid lightgray;
   }
-  .product img{
+  .products img{
     width: 75px;
   }
   .basketTotalContainer{

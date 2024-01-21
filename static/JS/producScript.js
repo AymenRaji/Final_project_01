@@ -3,44 +3,23 @@ console.log("Hey ")
 
 // import  products   from "/static/database.json" assert {type: "json"};
 let cart = document.querySelectorAll(".cart-button")
-let productCard = document.querySelector(".product-card")
+let productCards = document.querySelectorAll(".product-card")
+let productCardsArray = Array.from(productCards); // Convert HTML collection to array
+let products = {...productCardsArray}; // Convert array to object
+products = {};
 
-let products = [
-          {
-            "id": "64a654593e91b8e73a351e9b",
-            "name": "iphone 14",
-            "description": "Short description",
-            "price": 2999,
-            "brand": "apple",
-            "category": "Phone",
-            "inStock": true,
-            "image": "static/images/Iphone 14/download.jpeg",
-            "inCart": 1
-          },
-          {
-            "id": "64a4ebe300900d44bb50628a",
-            "name": "Iphone 14 pro",
-            "description": "PERFECT STROKE KEYS - Spherically-dished keys match the shape of your fingertips, offering satisfying feedback with every tap\nCOMFORT AND STABILITY - Type with confidence on a keyboard crafted for comfort, stability, and precision",
-            "price": 102.99,
-            "brand": "logitech",
-            "category": "Accesories",
-            "inStock": true,
-            "image": "static/images/Iphone 14 pro/download.jpeg",
-            "inCart": 1
-          },
-          {
-            "id": "649d775128b6744f0f497040",
-            "name": "Smart Watch(Answer/Make Call), 1.85 Smartwatch for Men Women IP68 Waterproof, 100+ Sport Modes, Fitness Activity Tracker, Heart Rate Sleep Monitor, Pedometer, Smart Watches for Android iOS, 2023",
-            "description": "Bluetooth Call and Message Reminder: The smart watch is equipped with HD speaker, after connecting to your phone via Bluetooth, you can directly use the smartwatches to answer or make calls, read messages, store contacts, view call history. The smartwatch can set up more message notifications in 'GloryFit' APP. You will never miss any calls and messages during meetings, workout and riding.",
-            "price": 50,
-            "brand": "Nerunsa",
-            "category": "Watch",
-            "inStock": true,
-            "image": "static/images/Iphone 14 pro max/download.jpeg",
-            "inCart": 1
-          }
-    
-]
+productCards.forEach((card, index) => {
+    let imgElement = card.querySelector('img');
+    let h3Element = card.querySelector('h3');
+    let pElement = card.querySelector('p');
+
+    products[index] = {
+        imageUrl: imgElement.getAttribute('src'),
+        name: imgElement.getAttribute('alt'),
+        price: pElement.innerText.split(': ')[1], // split the string to get the price
+    };
+});
+
 console.log(products)
 console.log(cart)
 
@@ -63,8 +42,8 @@ function getCartSpan() {
 }
 // const addToCart = document.getElementById("prdocuct-button");
 
-function cartNum(product){
-    console.log("prod clickec", product)
+function cartNum(products){
+    console.log("prod clickec", products)
     let productNumb = localStorage.getItem("cartNumb");
     productNumb = Number(productNumb);
     if(productNumb){
@@ -77,36 +56,26 @@ function cartNum(product){
         // cartSpan.innettxt = 1
         
     }
-    setItems(product);
+    setItems(products);
 }
-function setItems(product){
-    console.log("Pro inside the set items products", typeof product);
+function setItems(products){
+    console.log("Pro inside the set items products", typeof products);
     let cartItems = localStorage.getItem("productsInCart");
     console.log("Pro inside localStorage",typeof cartItems);
     cartItems = JSON.parse(cartItems);
-// Thse is block has to be reviewed
-    let htmlString = productCard.outerHTML;
-
-    let parser = new DOMParser();
-    let doc = parser.parseFromString(htmlString, "text/html");
-     products = {
-    image: productCard.querySelectorAll("img").src, 
-    name: productCard.querySelector('h3').textContent,
-    price: parseFloat(productCard.querySelector('p').textContent.replace(/[^0-9.]/g, ''))
-};
 
     if (cartItems != null){
-        if (cartItems[product.name] == undefined){
+        if (cartItems[products.name] == undefined){
             cartItems = {
                 ...cartItems,
-                [product.name]: product
+                [products.name]: products
 
             }
         }
-        cartItems[product.name ].inCart +=1;
+        cartItems[products.name ].inCart +=1;
     }else{
-        product.inCart = 1;
-        cartItems= {[product.name]: product}
+        products.inCart = 1;
+        cartItems= {[products.name]: products}
     ;
     }
     
@@ -114,7 +83,7 @@ function setItems(product){
 }
 
 
-function totalprice(product){
+function totalprice(products){
     // console.log("product price: ", prdocuct.price)
     let cartprice = localStorage.getItem("totalPrice");
     console.log("My cart cost is", cartprice);
@@ -123,16 +92,16 @@ function totalprice(product){
 
     if(cartprice != null){
         cartprice = Number(cartprice);
-        localStorage.setItem("totalPrice", cartprice + product.price)
+        localStorage.setItem("totalPrice", cartprice + products.price)
     }else{
-    localStorage.setItem("totalPrice", product.price)
+    localStorage.setItem("totalPrice", products.price)
     }
     
 }
 
 function displayCart(){
     let cartItems = localStorage.getItem("productsInCart");
-    cartItems - JSON.parse(cartItems);
+    cartItems = JSON.parse(cartItems);
     console.log(cartItems);
     let productContainer = document.querySelector(".products")
     let cartprice = localStorage.getItem("totalPrice");
@@ -141,10 +110,10 @@ function displayCart(){
         productContainer.innerHTML="";
 
         Object.values(cartItems).map(item =>{
-            productContainer.innerHTML=`
-            <div class="product">
+            productContainer.innerHTML +=`
+            <div class="products">
             <ion-icon name="close-circle-outline"></ion-icon>
-            <img src=${item.image}>
+            <img src=${item.imageUrl}>
             <span>${item.name}</span>
             </div>
             <div class="price">
@@ -160,7 +129,8 @@ function displayCart(){
             </div>
             `
         });
-        productContainer.innerHTML=`
+
+        productContainer.innerHTML +=`
             <div class= "basketTotalContainer>
                 <h4 class="basketTotalTitle">Basket Total </h4>
                 <h4 class="basketTotal">
