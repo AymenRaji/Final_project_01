@@ -62,7 +62,7 @@ header{
   }
   .products-container ion-icon{
     font-size: 25px;
-    color: blue;
+    color: rgb(233, 233, 240);
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
@@ -78,29 +78,28 @@ header{
   }
 .product-title{
     width: 45%;
-    border-bottom: 1px solid lightgray;
   }
 .price {
     width: 15%;
-    border-bottom: 1px solid lightgray;
     display: flex;
     align-items: center;
   }
 
   .total{
     width: 10%;
-    border-bottom: 1px solid lightgray;
     display: flex;
     align-items: center;
   }
   .quantity{
     width: 30%;
-    border-bottom: 1px solid lightgray;
     display: flex;
     align-items: center;
   }
-
-  .products{
+.product-row{
+  display: flex;
+  justify-content: space-between;
+}
+  .product{
     width: 45%;
     display: flex;
     justify-content: space-around;
@@ -108,18 +107,22 @@ header{
     padding: 10px 0;
     border-bottom: 1px solid lightgray;
   }
-  .products img{
+  .product img{
     width: 75px;
+    height: 90px;
   }
   .basketTotalContainer{
+    margin-top: 50px;
     display: flex;
     justify-content: flex-end;
     width: 100%;
     padding: 10px 0;
+
   }
 
   .basketTotalTitle{
     width: 30%;
+    
   }
   .basketTotal{
     width: 10%;

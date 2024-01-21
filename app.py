@@ -1,18 +1,31 @@
 # importing
 import flask
-from flask import render_template, request, url_for
+from flask import render_template, request, url_for, flash, redirect, get_flashed_messages, session
 from flask import jsonify
+from flask_mysqldb import MySQL
 import json 
 from flask import abort
+from datetime import datetime
+
 
 
 
 
 # App Name
 app = flask.Flask("app")
+app.secret_key = "0987654321"
+
+app.config['MYSQL_HOST'] = 'localhost' 
+app.config['MYSQL_USER'] = 'root' 
+app.config['MYSQL_PASSWORD'] = '' 
+app.config['MYSQL_DB'] = 'flask_user' 
+app.config['SECRET_KEY'] = '0987654321'  
+mysql = MySQL(app)
 
 # Database pathe
 file_path = "static/database.json"
+
+
 
 
 # using JSON file for registration and products
@@ -51,21 +64,22 @@ def register_user(username, password, email):
 def login_user(username, password):
     database = read_data(file_path)
 
-    user = next((user for user in database['users'] if user['username'] == username), None)
-    if user and user['password'] == password:
-        print("login successful. ")
+    user = next((user for user in database['users'] if user['username'] != username), None)
+    if user and user['password'] != password:
+         flash("Invalid user name or password")
+
     else:
-        print("Invalid user name or password")
+        flash(f'Welcome {username}!')
+        return redirect(url_for('/'))
 
 # adding products 
-def add_product(product_name, price, description="",
+def add_product(product_name, price, description="", inCart =1,
                 brand="",categorey="", in_stock=True, color=None, color_code =None, image = None, **Kwargs):
     # new product id
     prduct_id = len(database['products']) + 1
-    # Default Image to add the uimage url
-    default_image = "static/images/dog-img.jpg"
+
     # new product to be added
-    new_product = {"id": prduct_id, "name": product_name, "description": description, "price": price,
+    new_product = {"id": prduct_id, "name": product_name, "description": description, "inCart":1, "price": price,
                     "brand": brand, "categorey": categorey, "inStock": in_stock,
                         "image" : "img.src", **Kwargs
                     }
@@ -90,34 +104,54 @@ def render_template_page(page_name, **Kwargs):
 
 @app.route("/")
 def home():
-    database = read_data(file_path)
-    featured_products = database['products'][:3]
-    return render_template_page("template/home/index", featured_products=featured_products)
+    if "username" in session:
+        return render_template_page("template/home/index", username=session["username"])
+    else:
+        return render_template_page("template/home/index")
+    # database = read_data(file_path)
+    # featured_products = database['products'][:3]
+    # messages = get_flashed_messages()
+    # return render_template_page("template/home/index", featured_products=featured_products, messages=messages)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        email = request.form["email"]
-        register_user(username, password, email)
-    # render_template_page("register\page")
-    # register_term = flask.request.args("register_form")
-    # register_user()
+        # email = request.form["email"]
+        # register_user(username, password, email)
+        cur = mysql.connection.cursor()
+        date = datetime.now()
+        print(date)
+        cur.execute("insert into tbl_user (username, password) values (%s, %s, %s)", (username, password, date))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for("login"))
     return render_template_page("template/register/page")
 
 
-@app.route("/login", methods = ["GET", "POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        login_user(username, password)
-    # file = 
-    # login_term = flask.request.args("login_form")
-    # login_user()
-
+        # login_user(username, password)
+        cur = mysql.connection.cursor()
+        cur.execute(f"select username, password from tbl_user where username = '{username}'")
+        user = cur.fetchone()
+        cur.close()
+        if user and password == user[1]:
+            session['username'] == user[0]
+            return redirect(url_for('home'))
+        else:
+            return  render_template_page("template/loging/page", error="invailed user name or password")
+  
     return render_template_page("template/loging/page")
+
+@app.route("/logout")
+def logout():
+    session.pop("username", None)
+    return redirect(url_for("home"))
 
 @app.route("/products")
 def get_products():
@@ -125,38 +159,6 @@ def get_products():
     product_page = render_template("template/product/page.html", products=database['products'] ,products_json=jsonify(database['products']))
 
     return product_page
-
-@app.route("/update-products", methods=["POST"])
-def update_products():
-    # 
-    if not current_user.is_admin:
-        abort(403)
-    update_product = request.get_json()
-    database = read_data(file_path)
-    product_to_be_updated = next((product for product in database['products'] if product['id'] == update_product["id"]), None)
-# 
-    if product_to_be_updated is not None:
-        product_to_be_updated.update(update_product)
-        write_data(database, file_path)
-        return jsonify(product_to_be_updated), 200
-    return jsonify({"error": "product not found"}), 404
-
-# 
-@app.route("/delete_products", methods=["POST"])
-def delete_product():
-    if not current_user.is_admin:
-        abort(403)
-    # 
-    product_id = request.get_json()
-    database = read_data(file_path)
-
-    product_to_be_delete = next((product for product in database['products'] if product['id'] == product_id), None)
-
-    if product_to_be_delete is not None:
-        database['products'].remove(product_to_be_delete)
-        write_data(database, file_path)
-        return jsonify({"message": "product deleted"}), 200
-    return jsonify({"error": "product not found"}),404
 
 
 @app.route("/Shoppin_Cart")

@@ -25,12 +25,28 @@
             </form>
     
     </header>
+    <h1>login</h1>
+    {% if error %}
+        <p style="color: red;">{{error}}</p>
+    {% endif %}
     <div id="login">
-        <form action="{{url_for('login')}}" method="post">
-            <input type="text" placeholder="email" name="username" required><br>
+        <form action="/login" method="post">
+            <input type="text" placeholder="username" name="username" required><br>
             <input type="text" placeholder="password" name="password" required><br>
             <input type="submit" value="Log-In">
     </form>
+    </div>
+    <div>
+        <!-- {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class=flashes>
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %} -->
+
     </div>
 
     <p>you don't have account? here you can <a href="{{url_for('register')}}"><br>register </a></p>

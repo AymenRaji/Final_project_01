@@ -28,6 +28,19 @@
         </form>
        
     </header>
+
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class=flashes>
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    </div>
     <div id="home-banner">
         <div id="banner">
             <div class="grid-container">
@@ -45,12 +58,7 @@
           
         </div>
 
-        <div id="account">
-            <button class="register-button"><a href="/register">Register</a></button>
-            <button class="log-in-button"><a href="/login">log-in</a></button>
-            
-        </div>
-
+    
 
     </div>
 
@@ -98,6 +106,13 @@
        
 
     <footer  id="footer">
+        <div class="row">
+            <div class="col">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
         <div >
             <h2>Contact US</h2>
             <a href="https://twitter.com/"><i class="fa-brands fa-twitter fa-sm social-icon" style="color: #000205;"></i></a>
