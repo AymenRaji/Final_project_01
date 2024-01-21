@@ -118,9 +118,9 @@ function displayCart(){
                 ${item.price}
             </div>
             <div class="quanitity"> 
-                <ion-icon name="caret-back-outline"></ion-icon>
+                <ion-icon name="caret-back-outline" size="small"></ion-icon>
                 <span>${item.inCart}</span>
-                <ion-icon name="caret-forward-outline"></ion-icon>
+                <ion-icon name="caret-forward-outline" size="small"></ion-icon>
             </div>
             <div class="total">
             ${item.inCart * item.price}

@@ -5,20 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main page</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class="flashes">
-                    {% for message in messages %}
-                        <li>{{ messag }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
-
         <div class="logo"><a href="/">Al-Amal</a></div>
         <nav>
             <ul>
@@ -27,10 +19,6 @@
                 <li><a href="#">Contacts</a></li>
             </ul>
         </nav>
-        <form class="form-iline sticky-top search">
-            <input class="form-control ml-em-" type="search" placeholder="Search" aria-label="Serach">
-            <button class="btn btn-outline-success " type="submit" style=float:right;>Search</button>
-        </form>
        <nav>
         <ul>
             <li class="user-menu">
@@ -50,7 +38,15 @@
         </ul>
        </nav>
     </header>
-
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
 
     <div id="home-banner">
         <div id="banner">

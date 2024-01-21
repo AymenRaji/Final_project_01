@@ -1,6 +1,7 @@
 # importing
 import flask
 from flask import render_template, request, url_for, flash, redirect, get_flashed_messages, session
+import re
 from flask import jsonify
 from flask_mysqldb import MySQL
 import json 
@@ -25,23 +26,73 @@ mysql = MySQL(app)
 # Database pathe
 file_path = "static/database.json"
 
+from flask import flash
 
 class UserRegistration:
     # User class properties
-    def __init__(self, username, password, email):
+   from flask import flash
+
+class UserRegistration:
+    # User class properties
+    def __init__(self, username, password, confirm_password, email):
         self.username = username
         self.password = password
+        self.confirm_password = confirm_password
         self.email = email
-    # User class method, 
+
+    # User class method
     def register_user(self):
+        # Validate username uniqueness
+        if not self.is_username_unique():
+            flash("Username already exists. Please choose a different username.", "error")
+            redirect(url_for("register"))
+
+
+
+        # Validate email uniqueness and format
+        if not self.is_email_valid():
+            flash("Invalid email format or email already exists. Please provide a valid and unique email.", "error")
+            redirect(url_for("register"))
+
+
+        # Validate password confirmation
+        if not self.is_password_confirmed():
+            flash("Passwords do not match. Please make sure your passwords match.", "error")
+            redirect(url_for("register"))
+
+        # If all validations pass, proceed with registration
         cur = mysql.connection.cursor()
         date = datetime.now()
-        # Using the $s as aplace holder becasue of the qoutes can make incorect selecting, so I can add the new user in the mysqldb in the users table
-        cur.execute("insert into users (username, password, email, date) values (%s, %s, %s, %s)",
+        # Using %s as a placeholder to prevent SQL injection
+        cur.execute("INSERT INTO users (username, password, email, date) VALUES (%s, %s, %s, %s)",
                     (self.username, self.password, self.email, date))
         mysql.connection.commit()
         cur.close()
-        print("Registration successful")
+        flash("Registration successful!", "success")
+        redirect(url_for("login"))
+    def is_username_unique(self):
+        # Check if the username is unique in the database
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM users WHERE username = %s", (self.username,))
+        result = cur.fetchone()
+        cur.close()
+        return result is None
+
+    def is_email_valid(self):
+        # Validate email format and uniqueness
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email):
+            return False
+
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM users WHERE email = %s", (self.email,))
+        result = cur.fetchone()
+        cur.close()
+        return result is None
+
+    def is_password_confirmed(self):
+        # Check if the password matches the confirmed password
+        return self.password == self.confirm_password
+
 
 
 class UserLogin:
@@ -58,9 +109,11 @@ class UserLogin:
             session['username'] = user[0]
             return redirect(url_for('home'))
         else:
-            flash("Invalid username or password")
-            return redirect(url_for('login'))
+            print("Flash message set")
+            flash("Invalid username or password", "error")
+        return render_template_page("template/loging/page")
 
+        
 
 # using JSON file for importing and adding products  
 def read_data(file_path):
@@ -118,13 +171,18 @@ def home():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+        confirm_password = request.form["confirm_password"]
         email = request.form["email"]
-        new_user = UserRegistration(username, password, email)
-        new_user.register_user()
-        return redirect(url_for("login"))
+        new_user = UserRegistration(username, password, confirm_password, email)
+
+        if new_user.register_user():
+            redirect(url_for("login"))
+
+          
     return render_template_page("template/register/page")
 
 
