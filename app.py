@@ -26,9 +26,43 @@ mysql = MySQL(app)
 file_path = "static/database.json"
 
 
+class UserRegistration:
+    # User class properties
+    def __init__(self, username, password, email):
+        self.username = username
+        self.password = password
+        self.email = email
+    # User class method, 
+    def register_user(self):
+        cur = mysql.connection.cursor()
+        date = datetime.now()
+        # Using the $s as aplace holder becasue of the qoutes can make incorect selecting, so I can add the new user in the mysqldb in the users table
+        cur.execute("insert into users (username, password, email, date) values (%s, %s, %s, %s)",
+                    (self.username, self.password, self.email, date))
+        mysql.connection.commit()
+        cur.close()
+        print("Registration successful")
 
 
-# using JSON file for registration and products
+class UserLogin:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+    def login_user(self):
+        cur = mysql.connection.cursor()
+        cur.execute(f"select username, password from users where username = '{self.username}'")
+        user = cur.fetchone()
+        cur.close()
+        if user and self.password == user[1]:
+            session['username'] = user[0]
+            return redirect(url_for('home'))
+        else:
+            flash("Invalid username or password")
+            return redirect(url_for('login'))
+
+
+# using JSON file for importing and adding products  
 def read_data(file_path):
     try:
         with open(file_path, "r") as file:
@@ -43,34 +77,6 @@ def read_data(file_path):
 def write_data(data, file_path):
     with open(file_path, "w") as file:
         json.dump(data, file, indent=2)
-
-
-
-# Registration
-def register_user(username, password, email):
-    database = read_data(file_path)
-    #checking if the user the same name
-    if any(user["username"] == username for user in database["users"]):
-        print("Username already used. Choose another username. ")
-        return
-    #Register new user
-    new_user = {"username": username, "password": password, "email": email}
-    database["users"].append(new_user)
-    write_data(database, file_path)
-    print("Registration successful")
-
-
-# Login 
-def login_user(username, password):
-    database = read_data(file_path)
-
-    user = next((user for user in database['users'] if user['username'] != username), None)
-    if user and user['password'] != password:
-         flash("Invalid user name or password")
-
-    else:
-        flash(f'Welcome {username}!')
-        return redirect(url_for('/'))
 
 # adding products 
 def add_product(product_name, price, description="", inCart =1,
@@ -94,7 +100,7 @@ def add_product(product_name, price, description="", inCart =1,
 file_path = "static/database.json"
 database = read_data(file_path)
 if database is None:
-    database = {"users": [], "products":{}}
+    database = {"products":{}}
     write_data(database, file_path)
 
 
@@ -108,24 +114,16 @@ def home():
         return render_template_page("template/home/index", username=session["username"])
     else:
         return render_template_page("template/home/index")
-    # database = read_data(file_path)
-    # featured_products = database['products'][:3]
-    # messages = get_flashed_messages()
-    # return render_template_page("template/home/index", featured_products=featured_products, messages=messages)
+ 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        # email = request.form["email"]
-        # register_user(username, password, email)
-        cur = mysql.connection.cursor()
-        date = datetime.now()
-        print(date)
-        cur.execute("insert into tbl_user (username, password) values (%s, %s, %s)", (username, password, date))
-        mysql.connection.commit()
-        cur.close()
+        email = request.form["email"]
+        new_user = UserRegistration(username, password, email)
+        new_user.register_user()
         return redirect(url_for("login"))
     return render_template_page("template/register/page")
 
@@ -135,17 +133,8 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        # login_user(username, password)
-        cur = mysql.connection.cursor()
-        cur.execute(f"select username, password from tbl_user where username = '{username}'")
-        user = cur.fetchone()
-        cur.close()
-        if user and password == user[1]:
-            session['username'] == user[0]
-            return redirect(url_for('home'))
-        else:
-            return  render_template_page("template/loging/page", error="invailed user name or password")
-  
+        login_user = UserLogin(username, password)
+        return login_user.login_user()
     return render_template_page("template/loging/page")
 
 @app.route("/logout")
@@ -157,17 +146,18 @@ def logout():
 def get_products():
     database = read_data(file_path)
     product_page = render_template("template/product/page.html", products=database['products'] ,products_json=jsonify(database['products']))
-
     return product_page
 
 
 @app.route("/Shoppin_Cart")
 def cart():
-    cart_page = render_template("template/cart/page.html")
-    return cart_page
+    if "username" in session:
+        cart_page = render_template("template/cart/page.html")
+        return cart_page
+    else:
+        flash("Please log in to see the cart")
+        return redirect(url_for("login"))
 
-# if app == "__main__":
-#     app.run(depug=True)
+# add_product(product_name, price, description="", inCart =1,brand="",categorey="", in_stock=True, color=None, color_code =None, image = None, **Kwargs):
+# add_product("Case for iPad 10th", 13, "", 1, "", "", True, None, None,"https://m.media-amazon.com/images/I/51IFiSD+kCL._AC_SX466_.jpg")
 
-
-    

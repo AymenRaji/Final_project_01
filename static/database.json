@@ -1,16 +1,4 @@
 {
-  "users": [
-    {
-      "username": "aymen_raji",
-      "password": "12345678",
-      "email": "rajiaymen2@gmail.com"
-    },
-    {
-      "username": "Mohamed",
-      "password": "12345678",
-      "email": "rajiaymen2@gmail.com"
-    }
-  ],
   "products": [
     {
       "id": "64a654593e91b8e73a351e9b",
@@ -44,7 +32,28 @@
       "inStock": true,
       "image": "static/images/Iphone_14_pro/download.jpeg",
       "inCart": 1
+    },
+    {
+      "id": 4,
+      "name": "Case for iPad 10th",
+      "description": "",
+      "inCart": 1,
+      "price": 13,
+      "brand": "",
+      "categorey": "",
+      "inStock": true,
+      "image": "https://m.media-amazon.com/images/I/51IFiSD+kCL._AC_SX466_.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Case for iPad 10th",
+      "description": "",
+      "inCart": 1,
+      "price": 13,
+      "brand": "",
+      "categorey": "",
+      "inStock": true,
+      "image": "img.src"
     }
-    
   ]
 }

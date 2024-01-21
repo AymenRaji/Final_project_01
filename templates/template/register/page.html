@@ -31,15 +31,26 @@
         
 
     </header>
-    <H1>these is a Register form</H1>
-    
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="flashes">
+              {% for message in messages %}
+                  <li>{{ messag }}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
 
+    <H1>Register</H1>
+    
+    <div id="register">
     <form action="{{url_for('register')}}" method="post">
         <input type="text" placeholder="User Name" name="username" required><br>
         <input type="text" placeholder="email" name="email" required><br>
         <input type="password" name="password" required><br>
         <input type="submit" value="Register"><br>
     </form>
+  </div>
     <p>you have already account? <a href="{{url_for('login')}}"> <br>login</a></p>
     <footer class="white-section" id="footer">
         <div class="container-fluid">

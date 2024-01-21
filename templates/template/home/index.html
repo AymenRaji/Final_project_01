@@ -9,38 +9,49 @@
 </head>
 <body>
     <header>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ messag }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
         <div class="logo"><a href="/">Al-Amal</a></div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="/products">Products</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
                 <li><a href="#">Contacts</a></li>
-                <li class="cart">
-                    <a href="/Shoppin_Cart">
-                        Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
-                    </li>
             </ul>
         </nav>
         <form class="form-iline sticky-top search">
             <input class="form-control ml-em-" type="search" placeholder="Search" aria-label="Serach">
             <button class="btn btn-outline-success " type="submit" style=float:right;>Search</button>
         </form>
-       
+       <nav>
+        <ul>
+            <li class="user-menu">
+                {% if 'username' in session %}
+                <li class="cart">
+                    <a href="/Shoppin_Cart">
+                    Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
+                    </li>
+                    
+                    <a href="/logout">Logout</a>
+                {% else %}
+                    <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
+                    <a href="/register">Register</a>
+                    <a href="/login">Login</a>
+                {% endif %}
+            </li>
+        </ul>
+       </nav>
     </header>
 
-    <div>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class=flashes>
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
 
-    </div>
     <div id="home-banner">
         <div id="banner">
             <div class="grid-container">
@@ -48,11 +59,6 @@
                 <div class="grid-item"> 
                     <h1>Welcome to Al-Amal store</h1>
                     <br>
-                    <div id="account">
-                        <button class="register-button"><a href="/register">Register</a></button>
-                        <button class="log-in-button"><a href="/login">log-in</a></button>
-                        
-                    </div>
                    </div>
             </div>
           
@@ -65,8 +71,11 @@
 
 
        <h3>These is a main page </h3>
+        <div id="white-area">
+
+        </div>
        
-        <div id="products">
+        <!-- <div id="products">
             <div class="row">
                 <div class="column" >
                     <div class="card">
@@ -101,7 +110,7 @@
             </div>
             
 
-        </div>
+        </div> -->
         
        
 
