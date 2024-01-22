@@ -7,6 +7,7 @@ body, h1, h2, h3, p, ul, li {
 body {
   font-family: 'Roboto Mono', monospace;
   line-height: 1.6;
+  text-align: center;
 }
 
 header {
@@ -16,6 +17,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1em;
 }
 
 .logo a {
@@ -103,77 +105,6 @@ footer a {
   color: #fff;
 }
 
-/* Add more styles as needed for your specific content */
-
-/* 
-  h1,h2,h3,h4,h5,h6 {
-    font-family: "Montserrat-bold";
-    
-    margin: 0% 35%;
-  }
-  p{
-    color: #fefcfc;
-  }
-  a{
-    text-decoration: none;
-    padding: 20px 10px;
-    margin-top: auto;
-  } */
-  /* header{
-    background-color: #333;
-    color: #fff;
-    padding: 10px 30px;
-    display: flex;
-    margin: 0px -10px;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
-  }
-  .logo{
-    font-size: 30px;
-    font-weight: bold;
-  } 
-  .logo a:hover{
-    color: #ffcc00;
-  }
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-
-
-  }
-  nav li{
-    margin-right: 15px;
-    list-style: none;
-
-  }
-  #account{
-    display: flex;
-    margin-left: 50px;
-    padding: 0px;
-  }
-  #account :hover{
-    color: white;
-    background-color: #713b9a;
-
-    
-  }
-  nav a{
-    color: #fff;
-    font-weight: bold;
-    transition: color 0.3s ease;
-
-  }
-  nav a:hover{
-    color: #ffcc00;
-  }
-  nav button{
-    cursor: pointer;
-  }
-   */
-
   .col {
     display: inline-block;
     margin: 80px 30px 30px 50px;
@@ -186,7 +117,7 @@ footer a {
   #home-banner{
     height: 500px;
     width: 100%;
-    text-align: center;
+    text-align: left;
     background-color: #444549;
     color: #fff;
     margin-top: 70px;
@@ -198,55 +129,11 @@ footer a {
     
   }
 
-  /* .register-button{
-    background-color: white;
-    border: none;
-    color: #333;
-    padding: 13px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 50px;
-    justify-content: space-between;
-    margin: 10px;
-
-  }
-  .log-in-button{
-    background-color: white;
-    border: none;
-    color: #333;
-    padding: 13px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 50px;
-    justify-content: space-between;
-    margin: 10px;
-  } */
   .banner-h1{
     display: inline-block;
   }
 
-  .grid-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .grid-item{
-    text-align: center;
-    padding: 40px;
-    /* margin: 30px 20px 20px; */
-  }
-  .grid-item h1{
-    padding: 30px 30px 30px 0px;
-    margin-left: 0px;
-    margin-bottom: 80px;
-    margin-top: 30px;
-  }
-
+/* 
   .card {
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 2); 
    max-width: 300px;
@@ -285,24 +172,16 @@ footer a {
   }
   #products.grid-item{
     text-align: center;
-    padding: 40px;
-    /* margin: 30px 20px 20px; */
-  }
+    padding: 40px; 
+    margin: 30px 20px 20px; */
+  /* } */
 
   .column{
      float: left;
     width: 25%;
     padding: 0px 10px;
   }
-  .row{
-    margin: 0 -5px;
-  }
-
-  .row:after{
-    content: "";
-    display: table;
-    clear: both;
-  }
+  */
   * {
     box-sizing: border-box;
   }
@@ -311,7 +190,55 @@ footer a {
   height: 300px;
   background-color: #fff;
   margin-top: 150px;
+  color: #100;
+  text-align: left;
+  
 }
+#white-area p{
+  padding-top: 10px;
+  color: #100;
+  font-size: 14px;
+}
+
+/* Styling the footer  */
+
+#footer {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.row {
+  display: table-row;
+  vertical-align: middle;
+}
+
+.Get_to_Know_us,
+.Join_us,
+Contact_US {
+  display: table-cell;
+  padding: 5px;
+  vertical-align: middle;
+ 
+}
+
+#footer h4 {
+  margin-bottom: 10px;
+}
+
+#footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#footer li {
+  margin-bottom: 3px;
+}
+
+.Copyright{
+  margin-left: 180px;
+}
+
 
 /* Style products page  */
 .product-list{
@@ -322,7 +249,7 @@ footer a {
 
 .product-card {
   box-shadow: 0 4px 8ox 0 rgb(0, 0, 2);
-  color: #fff;
+  color: #100;
   width: calc(20% - 20px);
   border: 1px solid #ddd;
   margin-bottom: 20px;
@@ -331,18 +258,24 @@ footer a {
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
+  font-size: 12px;
 
+}
+.product-card span{
+  display: none;
 }
 .product-card p {
   max-height: 80px;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #100;
+  font-size: 12px;
 }
 .product-card h3{
   max-width: none;
   max-height: min-content;
   text-overflow: ellipsis;
-  font-size: 16px;
+  font-size: 12px;
 }
 .product-card img{
 width: 150px;
@@ -371,7 +304,7 @@ button {
   color: black;
 }
 .products-container ion-icon{
-  font-size: 25px;
+  font-size: 14px;
   color: #000;
   margin-left: 10px;
   margin-right: 10px;
@@ -411,22 +344,19 @@ button {
   align-items: center;
   font-size: 12px;
 }
-.qu-span{
-  font-size: 8px;
-}
+
 .product-row{
 display: flex;
 justify-content: space-between;
 border-bottom: 1px solid lightgray;
 }
 .product{
-  font-size: 12px;
   width: 45%;
   display: flex;
-  /* justify-content: space-around; */
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid lightgray;
+  font-size: 12px;
 }
 .product img{
   width: 75px;
@@ -435,6 +365,15 @@ border-bottom: 1px solid lightgray;
 }
 .product span{
   padding-left: 2px;
+  font-size: 12px;
+}
+.quanitity{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+
+}
+.itemInCart{
   font-size: 12px;
 }
 .basketTotalContainer{
@@ -467,8 +406,11 @@ border-bottom: 1px solid lightgray;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.flash-messages{
+.flash-messages.error{
   color: red;
+}
+.flash-messages.success{
+  color: #2bb330;
 }
 #login form {
   display: flex;

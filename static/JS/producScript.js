@@ -1,9 +1,10 @@
-// importing products from productData file
-console.log("Hey ")
 
-// import  products   from "/static/database.json" assert {type: "json"};
+
 let cart = document.querySelectorAll(".cart-button")
 let productCards = document.querySelectorAll(".product-card")
+
+
+
 let productCardsArray = Array.from(productCards); // Convert HTML collection to array
 let products = {...productCardsArray}; // Convert array to object
 products = {};
@@ -34,9 +35,15 @@ for (let i=0; i< cart.length; i++){
 
 function getCartSpan() {
     let productNumb = localStorage.getItem("cartNumb");
-    if(productNumb){
-     document.querySelector('.cart span').textContent = productNumb;
+    try{
+        if(productNumb){
+            document.querySelector('.cart span').textContent = productNumb;
+           }
     }
+    catch{
+        ;
+    }
+      
 }
 // const addToCart = document.getElementById("prdocuct-button");
 
@@ -56,9 +63,7 @@ function cartNum(products){
     setItems(products);
 }
 function setItems(products){
-    console.log("Pro inside the set items products", typeof products);
     let cartItems = localStorage.getItem("productsInCart");
-    console.log("Pro inside localStorage",typeof cartItems);
     cartItems = JSON.parse(cartItems);
 
     if (cartItems != null){
@@ -118,9 +123,11 @@ function displayCart(){
                 ${item.price}
             </div>
             <div class="quanitity"> 
-                <ion-icon name="caret-back-outline" size="small"></ion-icon>
-                <span>${item.inCart}</span>
-                <ion-icon name="caret-forward-outline" size="small"></ion-icon>
+                <div class="itemInCart">
+                    <ion-icon name="caret-back-outline" size="xx-small"></ion-icon>
+                    <span calss="qu-span">${item.inCart}</span>
+                    <ion-icon name="caret-forward-outline" size="xx-small"></ion-icon>
+                </div>
             </div>
             <div class="total">
             ${item.inCart * item.price}
@@ -140,113 +147,15 @@ function displayCart(){
                 </h4>
             </div>
         `;
+        productContainer.innerHTML +=`
+        
+        
+        `
 
     }
 }
 
-// fetch("http://localhost:80/products",{
-//     headers:{'Content-Type': 'application/json'}
-// }).then(response => response.json())
-// .then(data =>{
-//     const arrpr = JSON.stringify(data);
-//     const arrus = [...data.users];
-//     console.log(arrpr && typeof arrpr);
-//     console.log(arrus  && typeof arrus);
-// })
 
-// fetch("http://localhost:80/products", {
-//     headers: { 'Content-Type': 'application/json'}
-// })
-// .then(response => response.json())
-// .then(data => {
-//     console.log(data);
-//     if(Array.isArray(data.products)){
-//         const products = [...data.products];
-//         updateProductListin(products);  
-//         console.log(data);
-//     }else{
-//         console.error("Expected an array type but it's ", typeof data.products);
-//     }
-   
-// })
-
-// .catch(error => console.error('Error fetching:', error))
-
-// // update the product lising
-
-// function updateProductListin(products){
-//         if(Array.isArray(products)){
-//             products.forEach((product) => {
-//                 if (!product || Object.keys(product).length ===0 ){
-//                     return console.log("there is an empty object ")
-//                 }
-//                 const productCard = document.createElement("div");
-//                 productCard.className = "product-card";
-//                 productCard.innerHTML = `
-//                     <h3>${product.name}</h3>
-//                     <p>${product.description}</p>
-//                     <p>Price: $${product.price}</p>
-//                     <p>Brand:${product.brand}</p>
-//                     <p>Category:${product.category}</p>
-//                     <div class="product-images">
-//                         </div>
-//                     <button onclick="addToCart('${product.id}, '${product.name}', '${product.images[0].image}')"> Add to Cart </button>
-//                 `;
-//             ;
-//             product.images.forEach((image)=>{
-//                 const productImage = document.createElement("div");
-//                 productImage.className="product-image";
-//                 productImage.src = image.image;
-//                 productImage.alt = `${product.name} - ${image.color}`;
-//                 productImage.title = image.color;
-//                 productCard.querySelector(".produc-images").appendChild(productImage);
-                
-                
-//             });
-//             productListin.prepend(productCard);
-//             })}else{
-//                 console.error("expected an array but got ", typeof products)
-//             }};
-            
-        
-
-
-// // Adding to the Cart
-// function addToCart(productId, productName, productImage){
-//     console.log(`Product added to cart: ID: ${productId}, Name:${productName}, Image:${productImage}`);
-// }
-
-// updateProductListin(products)
-
-
-// // let cart_product = {
-// //     name :"Aymen",
-// //     Age: 26,
-// //     image: "static\images\Iphone 14 pro max\download.jpeg"
-// // }
-
-// let dataSterlize = JSON.stringify(cart_product)
-// localStorage.setItem(1, dataSterlize);
-
-// console.log(dataSterlize)
-
-// let data = localStorage.getItem(1)
-// data = JSON.parse(data)
-// console.log(data)
-
-
-// const car = document.getElementById("cart_produ")
-
-// let  cartProduct = createElement("div")
-// cartProduct.innerHTML = `
-//     <img  src
-// `
-// let products = {
-//     ImageUrl: productCard.querySelector('img').src,
-//     name: productCard.querySelector("h3").textContent,
-//     price: parseFloat(productCard.querySelector("p").textContent.replace(/[^0-9.]/g, "")),
-//     inCart: ""
-// }
 
 getCartSpan();
 displayCart();

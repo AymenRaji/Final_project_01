@@ -58,30 +58,49 @@
     </form>
     </div>
     <div>
-        <!-- {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class=flashes>
-                    {% for message in messages %}
-                        <p>{{ message }}</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %} -->
-
     </div>
 
     <p>you don't have account? here you can <a href="{{url_for('register')}}"><br>register </a></p>
 
-    <footer class="white-section" id="footer">
-        <div class="container-fluid">
+         
+<footer>
+    <div  id="footer">
+        
+        <div class="row">
+            <div class="Get_to_Know_us">
+                <div><h4>Get To Know us</h4></div>
+                <ul>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Al-Amal Service</a></li>
+                </ul>
+            </div>
+            <div class="Join_us">
+                <div><h4>Join Us</h4></div>
+                <ul>
+                    <li><a href="#">an invester</a></li>
+                    <li><a href="#"></a>multi-store partner</li>
+                    <li><a href="#"></a>an employer</li>
+                </ul>
+            </div>
+            <div>
+                <div>Contact US</div>
+                <ul>
+                    <li><a href="https://twitter.com/"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                    <li><a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                    <li><a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                    <li><a href="https://mail.google.com/"><ion-icon name="mail-outline"></ion-icon></a></li>
+                </ul>
 
-        <a href="https://twitter.com/"><i class="fa-brands fa-twitter fa-sm social-icon" style="color: #000205;"></i></a>
-        <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook fa-sm social-icon" style="color: #000000;"></i></a>
-        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-sm social-icon"></i></a>
-        <a href="https://mail.google.com/"><i class="fa-solid fa-envelope fa-sm social-icon" style="color: #000000;"></i></a>
-        <p style="margin-top: 10px;">© Copyright Al-Amal</p>
-  
+            </div>
         </div>
-      </footer>
+    </div>
+    <div class="Copyright">        
+        <p style="margin-top: 10px;">© Copyright Al-Amal</p>
+    </div>
+</footer>
+    <script type="module" src="{{ url_for('static', filename='/JS/producScript.js') }}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

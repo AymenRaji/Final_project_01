@@ -45,33 +45,33 @@ class UserRegistration:
         # Validate username uniqueness
         if not self.is_username_unique():
             flash("Username already exists. Please choose a different username.", "error")
-            redirect(url_for("register"))
+            return redirect(url_for("register"))
 
 
 
-        # Validate email uniqueness and format
+       
         if not self.is_email_valid():
             flash("Invalid email format or email already exists. Please provide a valid and unique email.", "error")
-            redirect(url_for("register"))
+            return redirect(url_for("register"))
 
 
-        # Validate password confirmation
+        
         if not self.is_password_confirmed():
             flash("Passwords do not match. Please make sure your passwords match.", "error")
-            redirect(url_for("register"))
+            return redirect(url_for("register"))
 
-        # If all validations pass, proceed with registration
+       
         cur = mysql.connection.cursor()
         date = datetime.now()
-        # Using %s as a placeholder to prevent SQL injection
         cur.execute("INSERT INTO users (username, password, email, date) VALUES (%s, %s, %s, %s)",
                     (self.username, self.password, self.email, date))
         mysql.connection.commit()
         cur.close()
+        session["username"] = self.username
+
         flash("Registration successful!", "success")
-        redirect(url_for("login"))
+        return redirect(url_for("home"))
     def is_username_unique(self):
-        # Check if the username is unique in the database
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM users WHERE username = %s", (self.username,))
         result = cur.fetchone()
@@ -79,19 +79,16 @@ class UserRegistration:
         return result is None
 
     def is_email_valid(self):
-        # Validate email format and uniqueness
         if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email):
             return False
-
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM users WHERE email = %s", (self.email,))
         result = cur.fetchone()
         cur.close()
         return result is None
-
     def is_password_confirmed(self):
-        # Check if the password matches the confirmed password
         return self.password == self.confirm_password
+        
 
 
 
@@ -140,7 +137,7 @@ def add_product(product_name, price, description="", inCart =1,
     # new product to be added
     new_product = {"id": prduct_id, "name": product_name, "description": description, "inCart":1, "price": price,
                     "brand": brand, "categorey": categorey, "inStock": in_stock,
-                        "image" : "img.src", **Kwargs
+                        "image" : image, **Kwargs
                     }
     
     database['products'].append(new_product)
@@ -171,18 +168,13 @@ def home():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
         confirm_password = request.form["confirm_password"]
         email = request.form["email"]
         new_user = UserRegistration(username, password, confirm_password, email)
-
-        if new_user.register_user():
-            redirect(url_for("login"))
-
-          
+        return new_user.register_user()
     return render_template_page("template/register/page")
 
 
@@ -217,5 +209,5 @@ def cart():
         return redirect(url_for("login"))
 
 # add_product(product_name, price, description="", inCart =1,brand="",categorey="", in_stock=True, color=None, color_code =None, image = None, **Kwargs):
-# add_product("Case for iPad 10th", 13, "", 1, "", "", True, None, None,"https://m.media-amazon.com/images/I/51IFiSD+kCL._AC_SX466_.jpg")
-
+# add_product("Samsung Galaxy s20+", 350, "", 1, "", "", True, None, None,image="https://m.media-amazon.com/images/I/61Q9IXJ1zcS._AC_UY327_FMwebp_QL65_.jpg")
+# add_product("Moto G", 135, "", 1, "", "", True, None, None,image="https://m.media-amazon.com/images/I/51bfhhUKhTL._AC_UY327_FMwebp_QL65_.jpg")
