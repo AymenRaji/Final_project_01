@@ -10,12 +10,14 @@ let products = {...productCardsArray}; // Convert array to object
 products = {};
 
 productCards.forEach((card, index) => {
+    let idElement = card.querySelector('h6')
     let imgElement = card.querySelector('img');
     let h3Element = card.querySelector('h3');
     let pElement = card.querySelector('p');
     let oneProductInCart = card.querySelector('span');
 
     products[index] = {
+        id: parseInt(idElement.innerText.split(': ')[1]),
         imageUrl: imgElement.getAttribute('src'),
         name: h3Element.innerText,
         price: parseInt(pElement.innerText.split(': ')[1]),
@@ -23,8 +25,7 @@ productCards.forEach((card, index) => {
     };
 });
 
-console.log(products)
-console.log(cart)
+
 
 for (let i=0; i< cart.length; i++){
     cart[i].addEventListener("click",()=>{
@@ -45,7 +46,7 @@ function getCartSpan() {
     }
       
 }
-// const addToCart = document.getElementById("prdocuct-button");
+
 
 function cartNum(products){
     let productNumb = localStorage.getItem("cartNumb");
@@ -62,22 +63,24 @@ function cartNum(products){
     }
     setItems(products);
 }
+
+// To edite and make by id instead of the name 
 function setItems(products){
     let cartItems = localStorage.getItem("productsInCart");
     cartItems = JSON.parse(cartItems);
 
     if (cartItems != null){
-        if (cartItems[products.name] == undefined){
+        if (cartItems[products.id] == undefined){
             cartItems = {
                 ...cartItems,
-                [products.name]: products
+                [products.id]: products
 
             }
         }
-    cartItems[products.name ].inCart +=1;
+    cartItems[products.id ].inCart +=1;
     }else{
         products.inCart = 1;
-        cartItems= {[products.name]: products}
+        cartItems= {[products.id]: products}
     ;
     }
     
@@ -86,11 +89,7 @@ function setItems(products){
 
 
 function totalprice(products){
-    // console.log("product price: ", products.price, typeof products.price)
     let cartprice = localStorage.getItem("totalPrice");
-    console.log("My cart cost is", cartprice);
-    
-    console.log(typeof cartprice);
 
     if(cartprice != null){
         cartprice = parseInt(cartprice);
@@ -104,15 +103,14 @@ function totalprice(products){
 function displayCart(){
     let cartItems = localStorage.getItem("productsInCart");
     cartItems = JSON.parse(cartItems);
-    console.log(cartItems);
     let productContainer = document.querySelector(".products")
     let cartprice = localStorage.getItem("totalPrice");
-    console.log("cart price type is ",typeof cartprice)
     if (cartItems && productContainer){
         productContainer.innerHTML="";
 
         Object.values(cartItems).map(item =>{
             productContainer.innerHTML +=`
+            <div class="id:${item.id}"">
             <div class="product-row">
             <div class="product">
             <ion-icon name="close-circle-outline"></ion-icon>
@@ -125,7 +123,7 @@ function displayCart(){
             <div class="quanitity"> 
                 <div class="itemInCart">
                     <ion-icon name="caret-back-outline" size="xx-small"></ion-icon>
-                    <span calss="qu-span">${item.inCart}</span>
+                    <span calss="cartSpan">${item.inCart}</span>
                     <ion-icon name="caret-forward-outline" size="xx-small"></ion-icon>
                 </div>
             </div>
@@ -134,8 +132,9 @@ function displayCart(){
             <br>
             </div>
             </div>
+            </div>
             `
-            console.log(typeof item.price)
+
         });
         
 
@@ -147,15 +146,58 @@ function displayCart(){
                 </h4>
             </div>
         `;
-        productContainer.innerHTML +=`
-        
-        
-        `
+        productContainer.innerHTML +=`        
+        <div class="row">
+            <div>
+                <button class="clearCart"><a href="/products">Clear Cart</a></button>
+            </div>
+
+            <div class="ShopeAgain">
+                <a href="/products">Add more producst</a>
+            </div>
+            
+        </div>
+        `;
 
     }
 }
+function removeproducts(){
+    let products = document.querySelector(".products");
+    let productsContainer = document.querySelector(".products-container");
+    productsContainer.removeChild(products);
+}
+function clearLocalstorage() {
+    try {
+        let products = document.querySelector(".products");
+        if (products){
+            let cartSpan = document.querySelector('.cart span');
+            let productNumb = localStorage.getItem("cartNumb");
+            if (productNumb) {
+                productNumb = parseInt(productNumb);
+                cartSpan.textContent = productNumb;
+            } else {
+                cartSpan.textContent = '0';
+            }
+            localStorage.clear()
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
 
+document.addEventListener("DOMContentLoaded", function() {
+   
+    try{
+        let clearCart = document.querySelector(".clearCart");
+        clearCart.addEventListener("click", function() {
+            clearLocalstorage();
+            removeproducts();
+        });
+    }catch{
 
+    }
+   
+});
 
 getCartSpan();
 displayCart();

@@ -94,16 +94,6 @@ nav a {
   padding: 40px 20px;
 }
 
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
-  text-align: center;
-}
-
-footer a {
-  color: #fff;
-}
 
   .col {
     display: inline-block;
@@ -133,48 +123,6 @@ footer a {
     display: inline-block;
   }
 
-/* 
-  .card {
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 2); 
-   max-width: 300px;
-   margin: auto;
-   text-align: center;
-   background-color: #fff;
-  }
-  .price{
-    color: gray;
-    font-size: 22px;
-
-  }
-
-  .card button{
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }
-  .card button:hover{
-    opacity: 0.7;
-  }
-
-
-  
-  #products.grid-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 5px;
-
-  }
-  #products.grid-item{
-    text-align: center;
-    padding: 40px; 
-    margin: 30px 20px 20px; */
-  /* } */
 
   .column{
      float: left;
@@ -240,6 +188,17 @@ Contact_US {
 }
 
 
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+}
+
 /* Style products page  */
 .product-list{
   display: flex;
@@ -291,7 +250,9 @@ button {
   cursor: pointer;
 }
 
-
+.productId{
+  display: none;
+}
 /* Styleing Cart */
 
 
@@ -378,8 +339,8 @@ border-bottom: 1px solid lightgray;
 }
 .basketTotalContainer{
   margin-top: 50px;
-  display: flex;
-  justify-content: flex-end;
+  display: table;
+  justify-content: left;
   width: 100%;
   padding: 10px 0;
 
@@ -387,10 +348,16 @@ border-bottom: 1px solid lightgray;
 
 .basketTotalTitle{
   width: 30%;
+  text-align: left;
   
 }
 .basketTotal{
   width: 10%;
+}
+
+.ShopeAgain a{
+  font-size: 12px;
+  color: #100;
 }
 
 /* Log in page style */
