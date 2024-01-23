@@ -129,13 +129,14 @@ def write_data(data, file_path):
         json.dump(data, file, indent=2)
 
 # adding products 
-def add_product(product_name, price, description="", inCart =1,
+def add_product(product_name, price, description="",
                 brand="",categorey="", in_stock=True, color=None, color_code =None, image = None, **Kwargs):
     # new product id
     prduct_id = len(database['products']) + 1
+    inCart = 0
 
     # new product to be added
-    new_product = {"id": prduct_id, "name": product_name, "description": description, "inCart":1, "price": price,
+    new_product = {"id": prduct_id, "name": product_name, "description": description, "inCart": inCart, "price": price,
                     "brand": brand, "categorey": categorey, "inStock": in_stock,
                         "image" : image, **Kwargs
                     }
@@ -208,6 +209,6 @@ def cart():
         flash("Please log in to see the cart")
         return redirect(url_for("login"))
 
-# add_product(product_name, price, description="", inCart =1,brand="",categorey="", in_stock=True, color=None, color_code =None, image = None, **Kwargs):
+# add_product(product_name, price, description="", brand="",categorey="", in_stock=True, color=None, color_code =None, image = None, **Kwargs):
 # add_product("Samsung Galaxy s20+", 350, "", 1, "", "", True, None, None,image="https://m.media-amazon.com/images/I/61Q9IXJ1zcS._AC_UY327_FMwebp_QL65_.jpg")
 # add_product("Moto G", 135, "", 1, "", "", True, None, None,image="https://m.media-amazon.com/images/I/51bfhhUKhTL._AC_UY327_FMwebp_QL65_.jpg")

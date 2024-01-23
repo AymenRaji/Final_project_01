@@ -9,6 +9,9 @@
  
   color: black;
 }
+.productQuanitity{
+  font-size: 12px;
+}
 .products-container ion-icon{
   font-size: 14px;
   color: #000;

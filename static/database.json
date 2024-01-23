@@ -9,7 +9,7 @@
       "category": "Phone",
       "inStock": true,
       "image": "static/images/Iphone_14_pro_max/download.jpeg",
-      "inCart": 1
+      "inCart": 0
     },
     {
       "id": "2",
@@ -20,7 +20,7 @@
       "category": "Accesories",
       "inStock": true,
       "image": "static/images/Iphone_14/download.jpeg",
-      "inCart": 1
+      "inCart": 0
     },
     {
       "id": "3",
@@ -31,13 +31,13 @@
       "category": "Watch",
       "inStock": true,
       "image": "static/images/Iphone_14_pro/download.jpeg",
-      "inCart": 1
+      "inCart": 0
     },
     {
       "id": 4,
       "name": "Case for iPad 10th",
       "description": "",
-      "inCart": 1,
+      "inCart": 0,
       "price": 13,
       "brand": "",
       "categorey": "",
@@ -48,7 +48,7 @@
       "id": 5,
       "name": "Samsung Galaxy s23",
       "description": "",
-      "inCart": 1,
+      "inCart": 0,
       "price": 600,
       "brand": "",
       "categorey": "",
@@ -59,7 +59,7 @@
       "id": 7,
       "name": "Samsung Galaxy s20+",
       "description": "",
-      "inCart": 1,
+      "inCart": 0,
       "price": 350,
       "brand": "",
       "categorey": "",
@@ -70,7 +70,7 @@
       "id": 8,
       "name": "Samsung Galaxy s23 Ultra",
       "description": "",
-      "inCart": 1,
+      "inCart": 0,
       "price": 915,
       "brand": "",
       "categorey": "",
@@ -81,7 +81,7 @@
       "id": 9,
       "name": "Moto G stylus",
       "description": "",
-      "inCart": 1,
+      "inCart": 0,
       "price": 135,
       "brand": "",
       "categorey": "",
