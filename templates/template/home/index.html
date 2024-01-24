@@ -10,7 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
+   
+   <div id="body-container">
     <header>
+        
         <div class="logo"><a href="/">Al-Amal</a></div>
         <nav>
             <ul>
@@ -21,12 +24,13 @@
         </nav>
        <nav>
         <ul>
+            <li class="cart">
+                <a href="/Shoppin_Cart">
+                Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
+                </li>
             <li class="user-menu">
                 {% if 'username' in session %}
-                <li class="cart">
-                    <a href="/Shoppin_Cart">
-                    Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
-                    </li>
+                
                     
                     <a href="/logout">Logout</a>
                 {% else %}
@@ -51,7 +55,7 @@
     <div id="home-banner">
         <div id="banner">
             <div class="grid-container">
-                <img class="grid-itme" src="static\images\online-shopping-banner-template_23-2148931702.avif" alt="Banner-img">
+                <img class="grid-itme" src="static/images/Banner_img.jpg" alt="Banner-img">
                 <div class="grid-item"> 
                     <h1>Welcome to Al-Amal store</h1>
                     <p>Maxime mollitia,
@@ -60,15 +64,12 @@
                         optio, eaque rerum! Provident similique accusantium nemo autem.</p>
                    </div>
             </div>
-          
         </div>
-
-    
+    <a href="/products"><button class = "banner-button">Shop Now</button></a>
 
     </div>
 
-
-
+    <div id="about-us-conatiner">
         <div id="white-area">
             <h2>About US</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
@@ -82,8 +83,12 @@
                 sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
                 recusandae alias error harum maxime adipisci amet laborum.</p>
         </div>
+    </div>
         
-       
+       <div id="spliter">
+
+        
+       </div>
 <footer>
     <div  id="footer">
         
@@ -120,8 +125,8 @@
         <p style="margin-top: 10px;">© Copyright Al-Amal</p>
     </div>
 </footer>
-    
-    <script src="{{ url_for('static', filename='/JS/producScript.js') }}"></script>
+   </div> 
+    <script type="module" src="{{ url_for('static', filename='/JS/producScript.js') }}"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

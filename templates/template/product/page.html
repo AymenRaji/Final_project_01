@@ -21,13 +21,12 @@
         </nav>
        <nav>
         <ul>
+            <li class="cart">
+                <a href="/Shoppin_Cart">
+                Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
+                </li>
             <li class="user-menu">
                 {% if 'username' in session %}
-                <li class="cart">
-                    <a href="/Shoppin_Cart">
-                    Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
-                    </li>
-                    
                     <a href="/logout">Logout</a>
                 {% else %}
                     <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
@@ -50,8 +49,8 @@
 {% endwith %}
 
 
-    <div>
-        <h2>These a product page</h2>
+    <div id="product-page-title">
+        <h2>Products</h2>
     </div>
     {% for product in products %}
         <div class="product-card">
@@ -73,6 +72,10 @@
         
     </div>
     
+    <div id="spliter">
+
+        
+    </div>
           
 <footer>
     <div  id="footer">

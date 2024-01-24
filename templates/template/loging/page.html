@@ -21,13 +21,12 @@
         </nav>
        <nav>
         <ul>
+            <li class="cart">
+                <a href="/Shoppin_Cart">
+                Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
+                </li>
             <li class="user-menu">
-                {% if 'username' in session %}
-                <li class="cart">
-                    <a href="/Shoppin_Cart">
-                    Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
-                    </li>
-                    
+                {% if 'username' in session %}    
                     <a href="/logout">Logout</a>
                 {% else %}
                     <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
@@ -62,7 +61,11 @@
 
     <p>you don't have account? here you can <a href="{{url_for('register')}}"><br>register </a></p>
 
-         
+    <div id="spliter">
+
+        
+    </div>
+        
 <footer>
     <div  id="footer">
         

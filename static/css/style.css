@@ -18,8 +18,12 @@ header {
   justify-content: space-between;
   align-items: center;
   font-size: 1em;
+  
 }
-
+header.sticky{
+  position: -webkit-sticky;
+  position: sticky;
+}
 .logo a {
   color: #fff;
   text-decoration: none;
@@ -62,7 +66,7 @@ nav a {
 }
 
 #home-banner {
-  background-color: #f8f9fa;
+  background-color: white;
   padding: 40px 0;
 }
 
@@ -70,6 +74,7 @@ nav a {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  background-color: #fff;
 }
 
 .grid-container {
@@ -79,10 +84,15 @@ nav a {
   align-items: center;
 }
 
-.grid-item img {
+
+.grid-itme  {
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
+  margin: auto;
+  display: block;
 }
+
+
 
 .grid-item h1 {
   font-size: 2.5em;
@@ -102,21 +112,50 @@ nav a {
     height: 300px;
   }
   .col h4, p, a{
-    color: #fff;
+    color: #100;
   }
   #home-banner{
     height: 500px;
     width: 100%;
     text-align: left;
-    background-color: #444549;
-    color: #fff;
-    margin-top: 70px;
+    background-color: white;
+    color: #100;
+ 
   
   }
   #banner{
     text-align: left;
-    margin-top: 40Px;
+   
     
+  }
+  .banner-button{
+    width: 145px;
+    height: 35px;
+    margin-left: 329px;
+    background-color: white;
+    border-color: #100;
+    border: 3px solid;
+    text-decoration: none;
+    
+    color: #100;
+  }
+  .banner-button:hover{
+    background-color: #100;
+    color: white;
+  }
+  .cart-button{
+    width: 130px;
+    height: 30px;
+    background-color: white;
+    border-color: #100;
+    border: 3px solid;
+    cursor: pointer;
+  
+  }
+
+  .cart-button:hover{
+    background-color: #100;
+    color: white;
   }
 
   .banner-h1{
@@ -133,32 +172,42 @@ nav a {
   * {
     box-sizing: border-box;
   }
+
+  #about-us-conatiner{
+    width: 100%;
+    background-color: black;
+  }
 #white-area{
-  width: 100%;
-  height: 300px;
-  background-color: #fff;
-  margin-top: 150px;
-  color: #100;
+  width: 80%;
+  height: 170px;
+  background-color: black;
+  margin-top: 90px;
+  color: white;
   text-align: left;
+  margin-left: 119px;
   
 }
 #white-area p{
   padding-top: 10px;
-  color: #100;
+  color: white;
   font-size: 14px;
 }
 
+#spliter{
+  height: 200px;
+}
 /* Styling the footer  */
 
 #footer {
   display: table;
-  width: 100%;
+  width: 50%;
   height: 100%;
 }
 
 .row {
   display: table-row;
   vertical-align: middle;
+
 }
 
 .Get_to_Know_us,
@@ -181,12 +230,19 @@ Contact_US {
 
 #footer li {
   margin-bottom: 3px;
+  font-weight: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-style: italic;
 }
 
 .Copyright{
-  margin-left: 180px;
+  margin-left: -666px;
+  
 }
-
+.Copyright p{
+  color: white;
+}
 
 footer {
   background-color: #333;
@@ -197,9 +253,17 @@ footer {
 
 footer a {
   color: #fff;
+  font-weight: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-style: italic;
 }
 
 /* Style products page  */
+#product-page-title{
+  margin: 20px 44px 15px;
+  text-align: left;
+}
 .product-list{
   display: flex;
   flex-wrap: wrap;
@@ -242,13 +306,7 @@ height: 200px;
 
 }
 
-button {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-}
+
 
 .productId{
   display: none;
@@ -394,13 +452,19 @@ border-bottom: 1px solid lightgray;
 }
 
 #login input[type="submit"] {
-  background-color: #713b9a;
-  color: #fff;
+  background-color: white;
+  color: black;
   cursor: pointer;
+  border: solid black 2px;
+  font-weight: bolder;
+  
 }
 
 #login input[type="submit"]:hover {
-  background-color: #6c358f;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  
 }
 
 #login p {
@@ -416,6 +480,7 @@ border-bottom: 1px solid lightgray;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
 }
 
 #register form {
@@ -432,14 +497,19 @@ border-bottom: 1px solid lightgray;
   border-radius: 5px;
 }
 
-#register input[type="submit"] {
-  background-color: #713b9a;
-  color: #fff;
+#register input[type="submit"], .register-button{
+  background-color: white;
+  color: black;
   cursor: pointer;
+  border: solid black 2px;
+  width: 200px;
+  height: 30px;
+  font-weight: bolder;
 }
 
-#register input[type="submit"]:hover {
-  background-color: #6c358f;
+#register input[type="submit"], .register-button:hover {
+  background-color: black;
+  color: white;
 }
 
 #register p {

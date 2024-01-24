@@ -1,13 +1,15 @@
-import { removeproducts, clearLocalstorage} from "./clearCart.js";
+import { removeproducts, clearLocalstorage} from "./removinFromCart.js";
+
 
 let cart = document.querySelectorAll(".cart-button")
 let productCards = document.querySelectorAll(".product-card")
 
-
+// converting products to an object which now it's come as html product card from the python back-end code, 
+// so it can be converted to string and store in the localStorage
 
 let productCardsArray = Array.from(productCards); 
 let products = {...productCardsArray}; 
-// products = {};
+
 
 productCards.forEach((card, index) => {
     let idElement = card.querySelector('h6')
@@ -26,6 +28,9 @@ productCards.forEach((card, index) => {
 });
 
 
+//Adding event in the button for all the products card, 
+//when it will be clicked it will be stored in the local storage with it's product name, image, prices, how much inCart from the same product
+//using the product-card id
 
 for (let i=0; i< cart.length; i++){
     cart[i].addEventListener("click",()=>{
@@ -264,14 +269,38 @@ function increaseQuanitityOfProduct(event) {
     onProductQuantity.textContent = updatedProductQuantity + 1;
 
 
+    let basketTotalToatal = document.querySelector(".basketTotal");
+    let price = productRow.querySelector(".price");
+    let cartSpan = productRow.querySelector(".itemInCart");
+    let productTotalInRow = productRow.querySelector(".total")
+    // let productTotalInRow = toatal.textContent
+    let Cartnumber = cartSpan.textContent;
+    console.log("These is Cartnumber", Cartnumber, typeof Cartnumber)
+    let cartSpanNumber = parseFloat(Cartnumber)
+    console.log("These is cartSpanNumber", cartSpanNumber, typeof cartSpanNumber)
+  
+    let updatedTotal= parseFloat(basketTotalToatal.textContent);
+    let removedPrice = parseFloat(price.textContent);
+    if (cartSpanNumber<1){
+        console.log("remove price is ", removedPrice, typeof removedPrice)
+    let allRemovedPrice = removedPrice * cartSpanNumber;
+    productTotalInRow.textContent = allRemovedPrice
+    console.log("AllRemoved is ", allRemovedPrice, typeof allRemovedPrice)
+    let updatedBasketTotal = updatedTotal + allRemovedPrice;
+    updatedBasketTotal = updatedBasketTotal.toFixed(2)
+    basketTotalToatal.textContent = updatedBasketTotal;
+    console.log(basketTotalToatal)
+    localStorage.setItem("totalPrice", updatedBasketTotal);
     let productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
+    }
+    
+
     let productId = productRow.getAttribute('id');
     productsInCart[productId].inCart += 1;
     localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
 }
 
-function decreaseQuanitity(event) {
-    console.log("Decrease quantity button clicked!");
+function decreaseQuanitityOfProductInRow(event){
     let decreaseQuanitity = event.currentTarget;
     let productRow = decreaseQuanitity.closest(".product-row");
     let onProductQuantity = productRow.querySelector(".itemInCart");
@@ -288,18 +317,44 @@ function decreaseQuanitity(event) {
     // }
 
     let updatedProductQuantity = parseInt(onProductQuantity.textContent);
+    
+    
+    let basketTotalToatal = document.querySelector(".basketTotal");
+    let price = productRow.querySelector(".price");
+    let cartSpan = productRow.querySelector(".itemInCart");
+    let productTotalInRow = productRow.querySelector(".total")
+    // let productTotalInRow = toatal.textContent
+    let Cartnumber = cartSpan.textContent;
+    console.log("These is Cartnumber", Cartnumber, typeof Cartnumber)
+    let cartSpanNumber = parseFloat(Cartnumber)
+    console.log("These is cartSpanNumber", cartSpanNumber, typeof cartSpanNumber)
+  
+    let updatedTotal= parseFloat(basketTotalToatal.textContent);
+    let pricePerProduct = parseFloat(price.textContent);
+    console.log("remove price is ", pricePerProduct, typeof pricePerProduct)
+    let allRemovedPrice = pricePerProduct * cartSpanNumber ;
+    productTotalInRow.textContent = allRemovedPrice
+    console.log("AllRemoved is ", allRemovedPrice, typeof allRemovedPrice)
+    let updatedBasketTotal = updatedTotal - allRemovedPrice;
+    updatedBasketTotal = updatedBasketTotal.toFixed(2)
+    basketTotalToatal.textContent = updatedBasketTotal;
+    console.log(basketTotalToatal)
+    localStorage.setItem("totalPrice", updatedBasketTotal);
 
-    if (updatedProductQuantity > 1) {
-    onProductQuantity.textContent = updatedProductQuantity - 1;
+   
 
     let productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
     let productId = productRow.getAttribute('id');
-    productsInCart[productId].inCart -= 1;
+    if(updatedProductQuantity > 1){
+        onProductQuantity.textContent = updatedProductQuantity - 1;
+        productsInCart[productId].inCart -= 1;
+    }
+    
     localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
 }
 
 
-}
+
 
 
 
@@ -321,7 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let decreaseQuanitity = document.querySelectorAll("#decreaseQuanitity");
         decreaseQuanitity.forEach(button => {
             button.addEventListener("click", function (event) {
-                decreaseQuanitity(event);
+                decreaseQuanitityOfProductInRow(event);
             });
         });
     } catch (error) {
@@ -330,6 +385,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
+
+document.addEventListener("DOMContentLoaded", function(){
+    let flashDuration = 5;
+    // let flasContainer = "flash-messages";
+    function removeflash(){
+    let flaselement = document.querySelectorAll(".flash-messages");
+    if (flaselement){
+        flaselement.forEach(elements => elements.parentNode.removeChild(elements));
+    }
+    }
+    setTimeout(removeflash, flashDuration * 1000);
+})
 
 getCartSpan();
 displayCart();
