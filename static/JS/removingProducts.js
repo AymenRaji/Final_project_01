@@ -1,3 +1,6 @@
+// The function when the user want to remove all the products or one one product
+// by click the X button and remove all button by clicking the Clear Cart button 
+
 export function removeAllproducts(){
     let products = document.querySelector(".products");
     let productsContainer = document.querySelector(".products-container");

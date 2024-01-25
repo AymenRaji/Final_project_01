@@ -28,21 +28,14 @@ productCards.forEach((card, index) => {
 
 //Adding event in the button for all the products card, 
 //when it will be clicked it will be stored in the local storage with it's product name, image, prices, how much inCart from the same product
-//using the product-card id
+//using the product-card id so it 
 
 for (let i=0; i< cart.length; i++){
     cart[i].addEventListener("click",()=>{
         cartNum(products[i]);
-        totalprice(products[i])
-        ;
+        totalprice(products[i]);
     });
 };
-
-document.querySelector('.about_URL').addEventListener("click", function(event){
-    event.preventDefault();
-    document.getElementById('message').textContent = "You clicked the About link!";
-});
-
 
 export function getCartSpan() {
     let productNumb = localStorage.getItem("cartNumb");
@@ -75,7 +68,7 @@ function cartNum(products){
 
 
 
-// To edite and make by id instead of the name 
+
 function setItems(products){
     let cartItems = localStorage.getItem("productsInCart");
     console.log("The are cartItems before" , cartItems)

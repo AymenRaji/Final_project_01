@@ -91,3 +91,8 @@ def cart():
 
 
 
+
+# These is an example to add new_product
+# add_product(product_name, price, description="", brand="",categorey="", in_stock=True, color=None, color_code =None, image = None, **Kwargs):
+# add_product("Samsung Galaxy s20+", 350, "", 1, "", "", True, None, None,image="https://m.media-amazon.com/images/I/61Q9IXJ1zcS._AC_UY327_FMwebp_QL65_.jpg")
+# add_product("Canon EOS m50", 26896, "",  "", "", True, None, None,image="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRKoaNM6gq_lCsp-QcDrgoI-BiJmOeTY_0Iibz6PcuTmokEW6sAB4aQReaZ3DdEtzQ5xqoOmY_EAsA_bYD6XtKBL3Dg5y3fivCzriMdYxVZmBc4ixOzypbp7i0wk8W9&usqp=CAc")

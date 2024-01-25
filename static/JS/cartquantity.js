@@ -1,6 +1,7 @@
 
 
-
+// These bot function, when the user adde the product item (if user need 2 item from the smae product),
+//  can add product and the total will be adjusted both in the browesre and localStorage
 
 export function increaseQuanitityOfProduct(event) {
     let increaseQuanitity = event.currentTarget;
