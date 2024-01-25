@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": "1",
+      "id":1,
       "name": "iphone 14 pro max",
       "description": "Short description",
       "price": 2999,
@@ -12,7 +12,7 @@
       "inCart": 0
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Iphone 14",
       "description": "PERFECT STROKE KEYS - Spherically-dished keys match the shape of your fingertips, offering satisfying feedback with every tap\nCOMFORT AND STABILITY - Type with confidence on a keyboard crafted for comfort, stability, and precision",
       "price": 102.99,
@@ -23,7 +23,7 @@
       "inCart": 0
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "iphone 14 pro ",
       "description": "Bluetooth Call and Message Reminder: The smart watch is equipped with HD speaker, after connecting to your phone via Bluetooth, you can directly use the smartwatches to answer or make calls, read messages, store contacts, view call history. The smartwatch can set up more message notifications in 'GloryFit' APP. You will never miss any calls and messages during meetings, workout and riding.",
       "price": 50,
@@ -34,7 +34,7 @@
       "inCart": 0
     },
     {
-      "id": 4,
+      "id":4,
       "name": "Case for iPad 10th",
       "description": "",
       "inCart": 0,
@@ -45,7 +45,7 @@
       "image": "https://m.media-amazon.com/images/I/51IFiSD+kCL._AC_SX466_.jpg"
     },
     {
-      "id": 5,
+      "id":5,
       "name": "Samsung Galaxy s23",
       "description": "",
       "inCart": 0,
@@ -56,7 +56,7 @@
       "image": "https://m.media-amazon.com/images/I/71ukK41npyL._AC_UY327_FMwebp_QL65_.jpg"
     },
     {
-      "id": 7,
+      "id":7,
       "name": "Samsung Galaxy s20+",
       "description": "",
       "inCart": 0,
@@ -67,7 +67,7 @@
       "image": "https://m.media-amazon.com/images/I/61Q9IXJ1zcS._AC_UY327_FMwebp_QL65_.jpg"
     },
     {
-      "id": 8,
+      "id":8,
       "name": "Samsung Galaxy s23 Ultra",
       "description": "",
       "inCart": 0,
@@ -78,7 +78,7 @@
       "image": "https://m.media-amazon.com/images/I/51mH1rGI3lL._AC_UY327_FMwebp_QL65_.jpg"
     },
     {
-      "id": 9,
+      "id":9,
       "name": "Moto G stylus",
       "description": "",
       "inCart": 0,
@@ -88,5 +88,77 @@
       "inStock": true,
       "image": "https://m.media-amazon.com/images/I/51bfhhUKhTL._AC_UY327_FMwebp_QL65_.jpg"
     }
+    ,{
+          "id":"10",
+          "name": "Lenovo V15",
+          "description": "GEN 4, 15.6 FHP display",
+          "inCart": 0,
+          "price": 399,
+          "brand": "",
+          "categorey": "",
+          "inStock": true,
+          "image": "https://m.media-amazon.com/images/I/71jw-oRPFTL._AC_UY327_FMwebp_QL65_.jpg"
+        },{
+          "id":"11",
+          "name": "acer Aspire 5",
+          "description": "",
+          "inCart": 0,
+          "price": 999,
+          "brand": "",
+          "categorey": "",
+          "inStock": true,
+          "image":"https://m.media-amazon.com/images/I/71NxciJivjL._AC_UY327_FMwebp_QL65_.jpg"
+        },{
+          "id":"12",
+          "name": "MacBook Aple 2023",
+          "description": "",
+          "inCart": 0,
+          "price": 1011,
+          "brand": "",
+          "categorey": "",
+          "inStock": true,
+          "image":"https://m.media-amazon.com/images/I/81Fm0tRFdHL._AC_UY327_FMwebp_QL65_.jpg"
+        },{
+          "id":"13",
+          "name": "Apple MacBook pro",
+          "description": "",
+          "inCart": 0,
+          "price": 2670,
+          "brand": "",
+          "categorey": "",
+          "inStock": true,
+          "image":"https://m.media-amazon.com/images/I/51Sk9QLje9L._AC_UY327_FMwebp_QL65_.jpg"
+        },{
+          "id":"14",
+          "name": "SoundCore",
+          "description": "Anker Space Q45 Adaptive Noise Cancelling HeadPhone",
+          "inCart": 0,
+          "price": 99,
+          "brand": "",
+          "categorey": "",
+          "inStock": true,
+          "image":"https://m.media-amazon.com/images/I/51zqZRMrWgL._AC_UY327_FMwebp_QL65_.jpg"
+        },{
+          "id":"15",
+          "name": "Skullcandy Hesh ANC",
+          "description": "",
+          "inCart": 0,
+          "price": 108,
+          "brand": "",
+          "categorey": "",
+          "inStock": true,
+          "image": "https://m.media-amazon.com/images/I/711qmgbZ7vL._AC_UY327_FMwebp_QL65_.jpg"
+        },{
+          "id":"16",
+          "name": "Canon EOS R100",
+          "description": "",
+          "inCart": 0,
+          "price": 519,
+          "brand": "",
+          "categorey": "",
+          "inStock": true,
+          "image":"https://m.media-amazon.com/images/I/61rU3NjprNL._AC_UY327_FMwebp_QL65_.jpg"
+        }
+    
   ]
 }

@@ -202,6 +202,8 @@ nav a {
   display: table;
   width: 50%;
   height: 100%;
+  text-align: left;
+  margin-left: 414px;
 }
 
 .row {
@@ -237,7 +239,8 @@ Contact_US {
 }
 
 .Copyright{
-  margin-left: -666px;
+  margin: 25px 0 25px -39px;
+  
   
 }
 .Copyright p{
@@ -407,6 +410,7 @@ border-bottom: 1px solid lightgray;
 .basketTotalTitle{
   width: 30%;
   text-align: left;
+  margin-left: 418px;
   
 }
 .basketTotal{
