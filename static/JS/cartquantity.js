@@ -30,6 +30,15 @@ export function increaseQuanitityOfProduct(event) {
     basketTotal.textContent = updatedBasketTotal
     localStorage.setItem("totalPrice", updatedBasketTotal)
 
+    let cartNumb = localStorage.getItem("cartNumb")
+    let updatedCartNumbe = parseFloat(cartNumb) + 1
+    localStorage.setItem("cartNumb", updatedCartNumbe)
+
+    let cartSpan = parseFloat(document.querySelector(".cart span").textContent);
+    let updatedCartSpan = cartSpan + 1
+    console.log("Thes", cartSpan, typeof cartSpan)
+    document.querySelector(".cart span").textContent = updatedCartSpan;
+
 }
 
 
@@ -65,6 +74,17 @@ export function decreaseQuanitityOfProductInRow(event){
     let updatedBasketTotal = newBasketTotalNumber - price 
     basketTotal.textContent = updatedBasketTotal
     localStorage.setItem("totalPrice", updatedBasketTotal)
+
+
+    let cartNumb = localStorage.getItem("cartNumb")
+    let updatedCartNumbe = parseFloat(cartNumb) - 1
+    localStorage.setItem("cartNumb", updatedCartNumbe)
+
+    let cartSpan = parseFloat(document.querySelector(".cart span").textContent);
+    let updatedCartSpan = cartSpan - 1
+    console.log("Thes", cartSpan, typeof cartSpan)
+    document.querySelector(".cart span").textContent = updatedCartSpan;
+
 
     }
 }

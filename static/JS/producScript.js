@@ -44,8 +44,14 @@ function displayCart(){
         productContainer.innerHTML +=`
             <div class= "basketTotalContainer">
                 <h4 class="basketTotalTitle">Basket Total: <span class="basketTotal">${cartprice}</spna> </h4>
+                <button class="checkout-button">checkout</button>
+            </div>
+        `;
+        productContainer.innerHTML +=`
+            <div class="checkout">
                 
             </div>
+        
         `;
         productContainer.innerHTML +=`        
         <div class="bottom-row">
@@ -91,9 +97,6 @@ removebuttons.forEach(button => {
 
 });
 
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
     try {
         let increaseQuanitity = document.querySelectorAll("#increaseQuanitity");
@@ -120,11 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function(){
     let flashDuration = 5;
     // let flasContainer = "flash-messages";
@@ -137,7 +135,24 @@ document.addEventListener("DOMContentLoaded", function(){
     setTimeout(removeflash, flashDuration * 1000);
 })
 
+document.addEventListener("DOMContentLoaded", function(){
+let footer = document.getElementById("footer");
+document.querySelector('.footer_URL').addEventListener("click", function(event){
+    event.preventDefault();
+    footer.scrollIntoView({behavior: "smooth"})
+})
 
+let about = document.getElementById("about-us-container");
+let aboutLink = document.querySelector('.about_URL');
+
+if (about && aboutLink) {
+    aboutLink.addEventListener("click", function(event){
+        event.preventDefault();
+        about.scrollIntoView({behavior: "smooth"})
+    })
+}
+
+})
 
 getCartSpan();
 displayCart();

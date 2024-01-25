@@ -98,6 +98,7 @@ border-bottom: 1px solid lightgray;
   width: 30%;
   text-align: left;
   margin-left: 440px;
+  margin-bottom: 8px;
   
 }
 .basketTotal{
@@ -114,7 +115,26 @@ border-bottom: 1px solid lightgray;
 .bottom-col{
   text-align: left;
   width: 50%;
+  
 
+}
+.bottom-col button{
+  width: 123px;
+  height: 28px;
+  background-color: white;
+  text-decoration: none;
+}
+.bottom-col button a{
+  text-decoration: none;
+  
+}
+.bottom-col button a:hover{
+  color: white;
+}
+.bottom-col button:hover{
+  width: 100px;
+  color: white;
+  background-color: black;
 }
 .ShopeAgain a{
   color: #100;
@@ -140,13 +160,26 @@ border-bottom: 1px solid lightgray;
 
 .clearcart{
   margin-right: 564px;
+  
 }
 .products-container col {
   text-align: left;
   width: 50%;
 }
 
-
+.checkout-button{
+  width: 96px;
+  height: 32px;
+  background-color: white;
+  margin-left: 382px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.checkout-button:hover{
+  color: white;
+  background-color: black;
+  width: 120px;
+}
 
 /* Head styling  */
 body, h1, h2, h3, p, ul, li {

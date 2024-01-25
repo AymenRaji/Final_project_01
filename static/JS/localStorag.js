@@ -33,10 +33,15 @@ productCards.forEach((card, index) => {
 for (let i=0; i< cart.length; i++){
     cart[i].addEventListener("click",()=>{
         cartNum(products[i]);
-        totalprice(products[i]);
+        totalprice(products[i])
+        ;
     });
 };
 
+document.querySelector('.about_URL').addEventListener("click", function(event){
+    event.preventDefault();
+    document.getElementById('message').textContent = "You clicked the About link!";
+});
 
 
 export function getCartSpan() {

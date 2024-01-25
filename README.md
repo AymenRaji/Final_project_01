@@ -1,10 +1,11 @@
 # MY FINAL PROJECT
 A one or two sentence description of your project here.
-My final project is an e-cmmerce web site app, named Al-Amal web store.
+## Description
+Welcome to our project! This is a e-commerc website app, the back-end made in Python(flask) and front-end in JavaScript, besides that I am using locaStorage. It allows users to quickly and easily register, login, see products, add in Carts and adjust the products that want in the cart page, the registration is required an unique name and email, also to confirm the password. 
 
 - What does it do?  
   Example: "This is a web project which tracks my music collection."
-  It's a web store that salls phones, laptops
+ With this App, users can effortlessly shop and explore the prices of the products, add products.
 
 - What is the "new feature" which you have implemented that we haven't seen before?  
   Example: "Chart drawing library graphs the user data"
