@@ -1,9 +1,11 @@
-app.secret_key = "0987654321"
+
+
+You can open the App by writing the bash terminal: { FLASK_APP=app.py flask run}
 
 # MY FINAL PROJECT
 A one or two sentence description of your project here.
 ## Description
-Welcome to our project! This is a e-commerc website app, the back-end made in Python(flask) and front-end in JavaScript, besides that I am using locaStorage. It allows users to quickly and easily register, login, see products, add in Carts and adjust the products that want in the cart page, the registration is required an unique name and email, also to confirm the password. 
+Welcome to our project! This is a e-commerc website app, the back-end made in Python(flask) and front-end in JavaScript, besides that I am using locaStorage. It allows users to quickly and easily register, login, see products, add in Carts and adjust the products that want in the cart page, the registration is required an unique name and email, also to confirm the password, 
 
 - What does it do?  
   Example: "This is a web project which tracks my music collection."
