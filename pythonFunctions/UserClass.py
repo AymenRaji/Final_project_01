@@ -50,7 +50,7 @@ class UserRegistration:
 
        
         cur = mysql.connection.cursor()
-        date = datetime.now()
+        date = datetime.datetime.now()
         cur.execute("INSERT INTO users (username, password, email, date) VALUES (%s, %s, %s, %s)",
                     (self.username, self.password, self.email, date))
         mysql.connection.commit()

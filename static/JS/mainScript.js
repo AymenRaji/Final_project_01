@@ -67,6 +67,8 @@ function displayCart(){
         `;
         
     }
+      
+   
 }
 
 
@@ -154,7 +156,16 @@ if (about && aboutLink) {
 
 })
 
-
+document.addEventListener("DOMContentLoaded", function(){
+   try{
+    let logingout = document.querySelector("#logout");
+    logingout.addEventListener("click", function(){
+        localStorage.clear();
+    })
+   }catch{
+    
+   }
+})
 
 
 getCartSpan();

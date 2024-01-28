@@ -27,7 +27,7 @@
                 </li>
             <li class="user-menu">
                 {% if 'username' in session %}    
-                    <a href="/logout">Logout</a>
+                    <a href="/logout" id="logout">Logout</a>
                 {% else %}
                     <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
                     <a href="/register">Register</a>
@@ -52,7 +52,7 @@
     <div id="login">
         <form action="/login" method="post">
             <input type="text" placeholder="username" name="username" required><br>
-            <input type="text" placeholder="password" name="password" required><br>
+            <input type="password" placeholder="password" name="password" required><br>
             <input type="submit" value="Log-In">
     </form>
     </div>

@@ -18,17 +18,12 @@ export function removeproduct(event){
         let Toatal = document.querySelector(".basketTotal");
         let price = productRow.querySelector(".price");
         let cartSpan = productRow.querySelector(".itemInCart");
-        console.log("These is cartSpan", cartSpan, typeof cartSpan)
         let Cartnumber = cartSpan.textContent;
-        console.log("These is Cartnumber", Cartnumber, typeof Cartnumber)
         let cartSpanNumber = parseFloat(Cartnumber)
-        console.log("These is cartSpanNumber", cartSpanNumber, typeof cartSpanNumber)
   
         let updatedTotal= parseFloat(Toatal.textContent);
         let removedPrice = parseFloat(price.textContent);
-        console.log("remove price is ", removedPrice, typeof removedPrice)
         let allRemovedPrice = removedPrice * cartSpanNumber;
-        console.log("AllRemoved is ", allRemovedPrice, typeof allRemovedPrice)
         let updatedBasketTotal = updatedTotal - allRemovedPrice;
         updatedBasketTotal = updatedBasketTotal.toFixed(2)
         Toatal.textContent = updatedBasketTotal;

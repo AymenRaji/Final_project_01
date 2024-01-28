@@ -39,11 +39,9 @@ for (let i=0; i< cart.length; i++){
 
 export function getCartSpan() {
     let productNumb = localStorage.getItem("cartNumb");
-    console.log("These getCartSoan",getCartSpan)
     try{
         if(productNumb){
             document.querySelector('.cart span').textContent = productNumb;
-            console.log("These cartsSpan",productNumb)
            }
     }
     catch{
@@ -71,12 +69,9 @@ function cartNum(products){
 
 function setItems(products){
     let cartItems = localStorage.getItem("productsInCart");
-    console.log("The are cartItems before" , cartItems)
     cartItems = JSON.parse(cartItems);
-    console.log("The are cartItems before" , cartItems)
     if (cartItems != null){
         if (cartItems[products.id] == undefined){
-            console.log(products.id)
             cartItems = {
                 ...cartItems,
                 [products.id]: products

@@ -37,7 +37,6 @@ export function increaseQuanitityOfProduct(event) {
 
     let cartSpan = parseFloat(document.querySelector(".cart span").textContent);
     let updatedCartSpan = cartSpan + 1
-    console.log("Thes", cartSpan, typeof cartSpan)
     document.querySelector(".cart span").textContent = updatedCartSpan;
 
 }
@@ -83,7 +82,6 @@ export function decreaseQuanitityOfProductInRow(event){
 
     let cartSpan = parseFloat(document.querySelector(".cart span").textContent);
     let updatedCartSpan = cartSpan - 1
-    console.log("Thes", cartSpan, typeof cartSpan)
     document.querySelector(".cart span").textContent = updatedCartSpan;
 
 
