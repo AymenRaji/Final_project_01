@@ -64,10 +64,13 @@ def login():
         return login_user.login_user()
     return render_template_page("template/loging/page")
 
-@app.route("/logout")
+@app.route("/logout" , methods=["GET","POST"] )
 def logout():
     session.pop("username", None)
-    return redirect(url_for("home"))
+    if request.method == "POST":
+        return jsonify(status = "success")
+    else: 
+        return redirect(url_for("home"))
 
 
 

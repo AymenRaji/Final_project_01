@@ -159,8 +159,24 @@ if (about && aboutLink) {
 document.addEventListener("DOMContentLoaded", function(){
    try{
     let logingout = document.querySelector("#logout");
-    logingout.addEventListener("click", function(){
-        localStorage.clear();
+    logingout.addEventListener("click", function(event){
+        event.preventDefault();
+        if(window.confirm("Do you want to logout" + "\n" + "if you clicked ok" + "\n" +"products in cart will be" +"\n" +"deleted")){
+            $.ajax({
+                url: "/logout",
+                type: "POST",
+                success: function(){
+                    console.log("Succes")
+                window.location.href = "/";
+                localStorage.clear();    
+                },
+                error: function(error){
+                    console.log(error);
+                }
+                });
+        }else{
+            window.location.href="/products";
+        }
     })
    }catch{
     
