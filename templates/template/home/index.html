@@ -6,8 +6,11 @@
     <title>Main page</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+
+    
 </head>
 <body>
    
@@ -29,12 +32,14 @@
                 Cart <ion-icon name="cart-outline"></ion-icon><span>0</span></a>
                 </li>
             <li class="user-menu">
+               
                 {% if 'username' in session %}
-                
+                    <ion-icon name="person-circle-outline"></ion-icon>
                     
+
                     <a href="/logout" id="logout">Logout</a>
                 {% else %}
-                    <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
+                    
                     <a href="/register">Register</a>
                     <a href="/login">Login</a>
                 {% endif %}
@@ -52,6 +57,8 @@
         {% endif %}
     {% endwith %}
 
+ 
+    
     <div id="home-banner">
         <div id="banner">
             <div class="grid-container">
@@ -126,10 +133,11 @@
     </div>
 </footer>
    </div> 
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="{{ url_for('static', filename='/JS/mainScript.js') }}"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
 
 </body>
 </html>

@@ -28,6 +28,7 @@ Flask_MySQL: for instaling {pip install Flask-MySQLdb==2.0.0}
    {After Download it and installing, open XAMPP and Start MYSQL and Apache, by clicking the start button}
    {After Start both click on the Admin Button, which it will open your browser}
    {In the browser click on the import, and select the users.sql }
+   {And make the DB name flask_user}
    {After that click on the import button on the bottom of your browser}
    {Then you can register using uniq name, confimed password, unieq email}
            {If you don't register or log in the Cart will not display for you }

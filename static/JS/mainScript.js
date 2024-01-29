@@ -156,11 +156,14 @@ if (about && aboutLink) {
 
 })
 
+
+
 document.addEventListener("DOMContentLoaded", function(){
    try{
     let logingout = document.querySelector("#logout");
     logingout.addEventListener("click", function(event){
         event.preventDefault();
+        
         if(window.confirm("Do you want to logout" + "\n" + "if you clicked ok" + "\n" +"products in cart will be" +"\n" +"deleted")){
             $.ajax({
                 url: "/logout",
@@ -182,7 +185,6 @@ document.addEventListener("DOMContentLoaded", function(){
     
    }
 })
-
 
 getCartSpan();
 displayCart();
