@@ -95,7 +95,6 @@ class UserLogin:
             session['username'] = user[0]
             return redirect(url_for('home'))
         else:
-            print("Flash message set")
             flash("Invalid username or password", "error")
         return render_template_page("template/loging/page")
 

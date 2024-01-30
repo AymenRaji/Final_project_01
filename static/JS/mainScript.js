@@ -157,34 +157,49 @@ if (about && aboutLink) {
 })
 
 
+function openPopup() {
+    // Show your custom modal
+    document.getElementById("customPopupMessage").style.display = 'block';
+}
+
+function closePopup(){
+    document.getElementById("customPopupMessage").style.display = "none";
+}
 
 document.addEventListener("DOMContentLoaded", function(){
-   try{
-    let logingout = document.querySelector("#logout");
-    logingout.addEventListener("click", function(event){
-        event.preventDefault();
-        
-        if(window.confirm("Do you want to logout" + "\n" + "if you clicked ok" + "\n" +"products in cart will be" +"\n" +"deleted")){
-            $.ajax({
-                url: "/logout",
-                type: "POST",
-                success: function(){
-                    console.log("Succes")
+    try {
+        let logingout = document.querySelector("#logout");
+        logingout.addEventListener("click", function (event) {
+            event.preventDefault();
+            openPopup();
+        });
+    } catch {
+       
+    }
+    document.getElementById('confirmLogout').addEventListener('click', function () {
+        $.ajax({
+            url: "/logout",
+            type: "POST",
+            success: function () {
+                
                 window.location.href = "/";
-                localStorage.clear();    
-                },
-                error: function(error){
-                    console.log(error);
-                }
-                });
-        }else{
-            window.location.href="/products";
-        }
-    })
-   }catch{
-    
-   }
-})
+                localStorage.clear();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+
+        closePopup();
+    });
+
+    document.getElementById('cancelLogout').addEventListener('click', function () {
+        closePopup();
+    });
+});
+
+
 
 getCartSpan();
 displayCart();

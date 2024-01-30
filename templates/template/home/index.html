@@ -37,7 +37,7 @@
                     <ion-icon name="person-circle-outline"></ion-icon>
                     
 
-                    <a href="/logout" id="logout">Logout</a>
+                    <a href="/logout" id="logout" >Logout</a>
                 {% else %}
                     
                     <a href="/register">Register</a>
@@ -57,6 +57,14 @@
         {% endif %}
     {% endwith %}
 
+    <div id="customPopupMessage" class="custom-popup">
+        <div class="custom-popup-content">
+            <h5>Logout Confirmation</h5>
+            <p>Do you want to logout? If you click OK, products in the cart will be deleted.</p>
+            <button id="confirmLogout">OK</button>
+            <button id="cancelLogout">Cancel</button>
+        </div>
+    </div>
  
     
     <div id="home-banner">
@@ -134,9 +142,9 @@
 </footer>
    </div> 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="module" src="{{ url_for('static', filename='/JS/mainScript.js') }}"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="{{ url_for('static', filename='/JS/mainScript.js') }}"></script>
     
 
 </body>
