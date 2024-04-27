@@ -1,4 +1,4 @@
-git 
+git sudo /opt/lampp/lampp start 
 
 You can open the App by writing the bash terminal: { FLASK_APP=app.py flask run}
 
