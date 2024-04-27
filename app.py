@@ -16,6 +16,9 @@ app.secret_key = "0987654321"
 
 
 # muSQL configratuition, mySQL is used for storeing users and veriving them
+app.config["MYSQL_PORT"] = 3306
+app.config['MYSQL_CHARSET'] = 'utf8mb4'
+app.config['MYSQL_UNIX_SOCKET'] = '/opt/lampp/var/mysql/mysql.sock' 
 app.config['MYSQL_HOST'] = 'localhost' 
 app.config['MYSQL_USER'] = 'root' 
 app.config['MYSQL_PASSWORD'] = '' 

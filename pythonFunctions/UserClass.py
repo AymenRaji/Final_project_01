@@ -4,11 +4,16 @@ from flask import flash, redirect, url_for, session
 import re
 from pythonFunctions.render_file import render_template_page
 from flask_mysqldb import MySQL
+from werkzeug.security import check_password_hash, generate_password_hash
+
+
 app = flask.Flask("app")
 app.secret_key = "0987654321"
 
-
 # muSQL configratuition, mySQL is used for storeing users and veriving them
+app.config["MYSQL_PORT"] = 3306
+app.config['MYSQL_CHARSET'] = 'utf8mb4'
+app.config['MYSQL_UNIX_SOCKET'] = '/opt/lampp/var/mysql/mysql.sock'  # Specify the path to the Unix socket
 app.config['MYSQL_HOST'] = 'localhost' 
 app.config['MYSQL_USER'] = 'root' 
 app.config['MYSQL_PASSWORD'] = '' 
@@ -51,6 +56,7 @@ class UserRegistration:
        
         cur = mysql.connection.cursor()
         date = datetime.datetime.now()
+        self.password = generate_password_hash(self.password)
         cur.execute("INSERT INTO users (username, password, email, date) VALUES (%s, %s, %s, %s)",
                     (self.username, self.password, self.email, date))
         mysql.connection.commit()
@@ -87,15 +93,23 @@ class UserLogin:
         self.password = password
 
     def login_user(self):
-        cur = mysql.connection.cursor()
-        cur.execute(f"select username, password from users where username = '{self.username}'")
-        user = cur.fetchone()
-        cur.close()
-        if user and self.password == user[1]:
-            session['username'] = user[0]
-            return redirect(url_for('home'))
-        else:
-            flash("Invalid username or password", "error")
+        try:
+            cur = mysql.connection.cursor()
+            cur.execute(f"select username, password from users where username = %s", (self.username,))
+            user = cur.fetchone()
+            cur.close()
+            print(self.password)
+            print(user[1])
+            if user and check_password_hash(user[1], self.password):
+            # if user and self.password == user[1]:
+                session['username'] = user[0]
+                return redirect(url_for('home'))
+            else:
+                flash("Invalid username or password", "error")
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            flash("An error occurred. Please try again.", "error")
+            
         return render_template_page("template/loging/page")
 
         
