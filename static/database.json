@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "name": "iphone 14 pro max",
+      "name": "iphone 14 pro",
       "description": "Short description",
       "price": 2999,
       "brand": "apple",
@@ -35,7 +35,7 @@
     },
     {
       "id": 4,
-      "name": "Case for iPad 10th",
+      "name": "Case for iPad",
       "description": "",
       "inCart": 0,
       "price": 13,
@@ -46,7 +46,7 @@
     },
     {
       "id": 5,
-      "name": "Samsung Galaxy s23",
+      "name": "Galaxy s23",
       "description": "",
       "inCart": 0,
       "price": 600,
@@ -57,7 +57,7 @@
     },
     {
       "id": 7,
-      "name": "Samsung Galaxy s20+",
+      "name": "Galaxy s20+",
       "description": "",
       "inCart": 0,
       "price": 350,
@@ -68,7 +68,7 @@
     },
     {
       "id": 8,
-      "name": "Samsung Galaxy s23 Ultra",
+      "name": "Galaxy s23 Ult",
       "description": "",
       "inCart": 0,
       "price": 915,
@@ -112,7 +112,7 @@
     },
     {
       "id": "12",
-      "name": "MacBook Aple 2023",
+      "name": "MacBook 2023",
       "description": "",
       "inCart": 0,
       "price": 1011,
@@ -123,7 +123,7 @@
     },
     {
       "id": "13",
-      "name": "Apple MacBook pro",
+      "name": "MacBook pro",
       "description": "",
       "inCart": 0,
       "price": 2670,
@@ -145,7 +145,7 @@
     },
     {
       "id": "15",
-      "name": "Skullcandy Hesh ANC",
+      "name": "Skullcandy",
       "description": "",
       "inCart": 0,
       "price": 108,
