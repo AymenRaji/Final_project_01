@@ -68,10 +68,11 @@
         <div class="product-card">
             <h6 class="productId">id: {{product.id}}</h6>
             <img src="{{product.image}}" alt="{{product.name}}">
-            <h3>Name: {{product.name}}</h3>
+            <h3 class="name">Name: {{product.name}}</h3>
             <p>Price: {{product.price}}</p>
             <span>inCart: {{product.inCart}}</span> <br>
-            <button class="cart-button">Add to cart</button>
+
+            <button class="cart-button {{product.id}}">Add to cart</button>
           
            
 
